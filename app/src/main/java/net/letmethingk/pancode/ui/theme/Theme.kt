@@ -12,45 +12,58 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
+    primary = brown,
+    onPrimary = White,
+
+    secondary = DarkWhiteV3,
+    onSecondary = White,
+
+    background = Darkgrey,
+    onBackground = White,
+
     surface = Darkgrey,
+    onSurface = White,
     surfaceVariant = DarkgreyV1,
+    onSurfaceVariant = White,
     surfaceDim = DarkgreyV2,
+
     surfaceContainer = GreyV2,
     surfaceContainerLow = Darkgrey,
     surfaceContainerHigh = GreyV1,
-    outline = Grey,
-    background = Darkgrey,
-    error = Red,
 
-    onPrimary = White,
-    onSecondary = White,
-    onSurface = White,
-    onSurfaceVariant = White,
-    onBackground = White,
+    outline = Grey,
+    outlineVariant = Grey,
+
+    error = Red,
     onError = White,
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
+    primary = brownV1,
+    onPrimary = Black,
+
+    secondary = DarkWhiteV3,
+    onSecondary = Black,
+
+    background = DarkWhite,
+    onBackground = Black,
+
     surface = DarkWhite,
+    onSurface = Black,
     surfaceVariant = DarkWhiteV1,
+    onSurfaceVariant = Black,
     surfaceDim = DarkWhiteV2,
+
     surfaceContainer = WhiteV2,
     surfaceContainerLow = DarkWhiteV2,
     surfaceContainerHigh = WhiteV1,
-    outline = White,
-    background = DarkWhite,
-    error = Red,
 
-    onPrimary = Black,
-    onSecondary = Black,
-    onSurface = Black,
-    onSurfaceVariant = Black,
-    onBackground = Black,
-    onError = Black,
+    outline = White,
+    outlineVariant = White,
+
+    error = Red,
+    onError = White,
+
 )
 
 @Composable
@@ -60,15 +73,16 @@ fun PancodeTheme(
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
+//    val colorScheme = when {
+//        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+//            val context = LocalContext.current
+//            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+//        }
+//
+//        darkTheme -> DarkColorScheme
+//        else -> LightColorScheme
+//    }
+    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
 
     MaterialTheme(
         colorScheme = colorScheme,
