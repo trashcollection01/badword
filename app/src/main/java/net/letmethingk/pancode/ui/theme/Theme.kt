@@ -40,7 +40,7 @@ private val DarkColorScheme = darkColorScheme(
 
 private val LightColorScheme = lightColorScheme(
     primary = brownV1,
-    onPrimary = Black,
+    onPrimary = White,
 
     secondary = DarkWhiteV3,
     onSecondary = Black,
@@ -55,7 +55,7 @@ private val LightColorScheme = lightColorScheme(
     surfaceDim = DarkWhiteV2,
 
     surfaceContainer = WhiteV2,
-    surfaceContainerLow = DarkWhiteV2,
+    surfaceContainerLow = DarkWhite,
     surfaceContainerHigh = WhiteV1,
 
     outline = White,
@@ -70,19 +70,18 @@ private val LightColorScheme = lightColorScheme(
 fun PancodeTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+//    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-//    val colorScheme = when {
+    val colorScheme = when {
 //        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
 //            val context = LocalContext.current
 //            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
 //        }
-//
-//        darkTheme -> DarkColorScheme
-//        else -> LightColorScheme
-//    }
-    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+
+        darkTheme -> DarkColorScheme
+        else -> LightColorScheme
+    }
 
     MaterialTheme(
         colorScheme = colorScheme,

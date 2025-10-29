@@ -19,26 +19,46 @@ val Typography = Typography(
         lineHeight = 40.sp,
         letterSpacing = 0.5.sp
     ),
-    titleMedium = TextStyle(
+    headlineMedium = TextStyle(
+        fontFamily = FontFamily(Font(R.font.inter)),
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 26.sp,
+        lineHeight = 30.sp,
+        letterSpacing = 0.5.sp
+    ),
+    titleLarge = TextStyle(
         fontFamily = FontFamily(Font(R.font.inter)),
         fontWeight = FontWeight.Medium,
         fontSize = 25.sp,
         lineHeight = 30.sp,
         letterSpacing = 0.5.sp
     ),
+    titleMedium = TextStyle(
+        fontFamily = FontFamily(Font(R.font.inter)),
+        fontWeight = FontWeight.Normal,
+        fontSize = 20.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
+    ),
     bodyMedium = TextStyle(
         fontFamily = FontFamily(Font(R.font.inter)),
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
-        lineHeight = 20.sp,
+        lineHeight = 19.sp,
+        letterSpacing = 0.5.sp
+    ),
+    labelLarge = TextStyle(
+        fontFamily = FontFamily(Font(R.font.inter)),
+        fontWeight = FontWeight.Normal,
+        fontSize = 20.sp,
+        lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
     labelMedium = TextStyle(
         fontFamily = FontFamily(Font(R.font.inter)),
-        color = Color.White,
         fontWeight = FontWeight.Normal,
-        fontSize = 20.sp,
-        lineHeight = 20.sp,
+        fontSize = 16.sp,
+        lineHeight = 19.sp,
         letterSpacing = 0.5.sp
     )
 )
