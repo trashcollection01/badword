@@ -14,19 +14,27 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import net.letmethingk.pancode.ui.components.ButtonMedium
 import net.letmethingk.pancode.ui.theme.PancodeTheme
 import net.letmethingk.pancode.ui.components.Overlay
 
 @Composable
-fun WorkspaceScreen() {
+fun WorkspaceScreen(
+    modifier: Modifier = Modifier
+) {
+    var showWelcomeDialog by remember { mutableStateOf(true) }
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(color = MaterialTheme.colorScheme.surfaceDim),
         verticalArrangement = Arrangement.Top,
@@ -43,52 +51,61 @@ fun WorkspaceScreen() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(35  .dp)
+                .height(35.dp)
                 .background(color = MaterialTheme.colorScheme.surfaceVariant)
         ) {
 
         }
     }
+//    if (showWelcomeDialog) {
+//        WelcomeDialog(onConfirm = { showWelcomeDialog = false })
+//    }
 }
 
 @Composable
-fun WelcomeDialog() {
-    Column(
-        modifier = Modifier
-            .width(325.dp)
-            .height(440.dp)
-            .background(
-                color = MaterialTheme.colorScheme.surfaceContainerLow,
-                shape = RoundedCornerShape(25.dp)
-            )
-            .padding(all = 20.dp),
-        verticalArrangement = Arrangement.SpaceBetween,
-        horizontalAlignment = Alignment.CenterHorizontally
+fun WelcomeDialog(
+    onConfirm: () -> Unit
+) {
+    Dialog(
+        onDismissRequest = { onConfirm }
     ) {
-        Column {
-            Text(
-                text = "Welcome to Pancode",
-                style = MaterialTheme.typography.headlineMedium
-            )
-            Spacer(modifier = Modifier.height(15.dp))
-            Text(
-                text = "Just with your mobile device," +
-                        "you can do coding.",
-                style = MaterialTheme.typography.titleMedium
-            )
-            Spacer(modifier = Modifier.height(10.dp))
-            Text(
-                text = "Pancode is a code editor developed to make technology easier for people to access. " +
-                        "Conventional code editors can only be accessed on a PC, some people don't have a PC. " +
-                        "That's why we build Pancode.",
-                style = MaterialTheme.typography.bodyMedium,
-                textAlign = TextAlign.Justify
+        Column(
+            modifier = Modifier
+                .width(325.dp)
+                .height(400.dp)
+                .background(
+                    color = MaterialTheme.colorScheme.surfaceContainerLow,
+                    shape = RoundedCornerShape(25.dp)
+                )
+                .padding(all = 20.dp),
+            verticalArrangement = Arrangement.SpaceBetween,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Column {
+                Text(
+                    text = "Welcome to Pancode",
+                    style = MaterialTheme.typography.headlineMedium
+                )
+                Spacer(modifier = Modifier.height(15.dp))
+                Text(
+                    text = "Just with your mobile device," +
+                            "you can do coding.",
+                    style = MaterialTheme.typography.titleMedium
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+                Text(
+                    text = "Pancode is a code editor developed to make technology easier for people to access. " +
+                            "Conventional code editors can only be accessed on a PC, some people don't have a PC. " +
+                            "That's why we build Pancode.",
+                    style = MaterialTheme.typography.bodyMedium,
+                    textAlign = TextAlign.Justify
+                )
+            }
+            ButtonMedium(
+                onClick = onConfirm,
+                text = "Loremo"
             )
         }
-        ButtonMedium(
-            onClick = {},
-            text = "Loremo"
-        )
     }
 }
 
@@ -96,8 +113,6 @@ fun WelcomeDialog() {
 @Composable
 fun WorkspacePreview() {
     PancodeTheme {
-        Overlay {
-            WelcomeDialog()
-        }
+        WorkspaceScreen()
     }
 }
