@@ -1,20 +1,24 @@
 package net.letmethingk.pancode.ui.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.ui.theme.PancodeTheme
-import org.w3c.dom.Text
 
+
+//          BUTTON REGULAR          //
 @Composable
 fun ButtonLarge(
     onClick: () -> Unit,
@@ -60,6 +64,26 @@ fun ButtonMedium(
         Text(
             text = text,
             style = MaterialTheme.typography.labelMedium
+        )
+    }
+}
+
+//          BUTTON ICON          //
+@Composable
+fun IconButton24(
+    onClick: () -> Unit,
+    imageVector: ImageVector,
+    contentDescription: String
+) {
+    IconButton(
+        onClick = onClick,
+        modifier = Modifier
+            .size(24.dp),
+        shape = RoundedCornerShape(0.dp)
+    ) {
+        Icon(
+            imageVector = imageVector,
+            contentDescription = contentDescription
         )
     }
 }

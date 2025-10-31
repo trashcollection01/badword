@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,7 +25,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import com.composables.defic12
+import com.composables.defic24
 import net.letmethingk.pancode.ui.components.ButtonMedium
+import net.letmethingk.pancode.ui.components.IconButton24
 import net.letmethingk.pancode.ui.theme.PancodeTheme
 import net.letmethingk.pancode.ui.components.Overlay
 
@@ -45,7 +49,34 @@ fun WorkspaceScreen(
                 .fillMaxWidth()
                 .height(60.dp)
                 .background(color = MaterialTheme.colorScheme.surface)
+                .padding(horizontal = 15.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
+            Row {
+                IconButton24(
+                    onClick = {},
+                    imageVector = defic24,
+                    contentDescription = "drawer-menu"
+                )
+                Spacer(modifier = Modifier.width(15.dp))
+                Row() {
+                    Icon(
+                        imageVector = defic24,
+                        contentDescription = null
+                    )
+                    Spacer(modifier = Modifier.width(7.dp))
+                    Text(
+                        text = "Pancode",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                }
+            }
+            IconButton24(
+                onClick = {},
+                imageVector = defic24,
+                contentDescription = "drawer-menu"
+            )
 
         }
         Row(
