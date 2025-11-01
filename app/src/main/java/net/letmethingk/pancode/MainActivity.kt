@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import net.letmethingk.pancode.ui.screens.WelcomeDialog
 import net.letmethingk.pancode.ui.screens.WorkspaceScreen
 import net.letmethingk.pancode.ui.theme.PancodeTheme
 

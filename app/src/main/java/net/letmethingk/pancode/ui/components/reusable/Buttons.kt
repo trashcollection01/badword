@@ -1,11 +1,13 @@
-package net.letmethingk.pancode.ui.components
+package net.letmethingk.pancode.ui.components.reusable
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -68,7 +70,7 @@ fun ButtonMedium(
     }
 }
 
-//          BUTTON ICON          //
+//          ICON BUTTON          //
 @Composable
 fun IconButton24(
     onClick: () -> Unit,
@@ -86,6 +88,26 @@ fun IconButton24(
             contentDescription = contentDescription
         )
     }
+}
+
+//          DROPDOWN MENU BUTTON          //
+@Composable
+fun DropdownMenuButton(
+    onClick: () -> Unit,
+    text: String
+) {
+    DropdownMenuItem(
+        onClick = onClick,
+        text = {
+            Text(
+                text = text,
+                style = MaterialTheme.typography.labelMedium
+            )
+        },
+        modifier = Modifier
+            .height(35.dp)
+            .background(color = MaterialTheme.colorScheme.surfaceContainerLow)
+    )
 }
 
 @Preview

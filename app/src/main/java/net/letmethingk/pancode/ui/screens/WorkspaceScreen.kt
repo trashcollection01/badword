@@ -25,12 +25,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import com.composables.defic12
 import com.composables.defic24
-import net.letmethingk.pancode.ui.components.ButtonMedium
-import net.letmethingk.pancode.ui.components.IconButton24
+import net.letmethingk.pancode.ui.components.MainMenu
+import net.letmethingk.pancode.ui.components.reusable.ButtonMedium
+import net.letmethingk.pancode.ui.components.reusable.IconButton24
 import net.letmethingk.pancode.ui.theme.PancodeTheme
-import net.letmethingk.pancode.ui.components.Overlay
 
 @Composable
 fun WorkspaceScreen(
@@ -72,12 +71,7 @@ fun WorkspaceScreen(
                     )
                 }
             }
-            IconButton24(
-                onClick = {},
-                imageVector = defic24,
-                contentDescription = "drawer-menu"
-            )
-
+            MainMenu()
         }
         Row(
             modifier = Modifier
