@@ -1,6 +1,9 @@
 package net.letmethingk.pancode.ui.components
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.DropdownMenu
@@ -13,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import com.composables.defic24
 import net.letmethingk.pancode.ui.components.reusable.DropdownMenuButton
@@ -22,58 +26,94 @@ import net.letmethingk.pancode.ui.theme.PancodeTheme
 @Composable
 fun MainMenu() {
     var expandedMainMenu by remember { mutableStateOf(true) }
+    var expandedFileMenu by remember { mutableStateOf(true) }
     Box {
         IconButton24(
             onClick = { expandedMainMenu = !expandedMainMenu },
             imageVector = defic24,
             contentDescription = ""
         )
-        DropdownMenu(
-            expanded = expandedMainMenu,
-            onDismissRequest = { expandedMainMenu = false },
-            modifier = Modifier
-                .width(120.dp)
-                .padding(
-                    vertical = 0.dp,
-                    horizontal = 0.dp
-                ),
-        ) {
-            DropdownMenuButton(
-                onClick = {},
-                text = "File"
-            )
-            DropdownMenuButton(
-                onClick = {},
-                text = "Edit"
-            )
-            DropdownMenuButton(
-                onClick = {},
-                text = "Selection"
-            )
-            DropdownMenuButton(
-                onClick = {},
-                text = "View"
-            )
-            DropdownMenuButton(
-                onClick = {},
-                text = "Run"
-            )
-            DropdownMenuButton(
-                onClick = {},
-                text = "Terminal"
-            )
-            HorizontalDivider(
-                modifier = Modifier.padding(vertical = 5.dp),
-                color = MaterialTheme.colorScheme.outlineVariant
-            )
-            DropdownMenuButton(
-                onClick = {},
-                text = "Settings"
-            )
-            DropdownMenuButton(
-                onClick = {},
-                text = "Help"
-            )
+        Row {
+            DropdownMenu(
+                expanded = expandedFileMenu,
+                onDismissRequest = { expandedFileMenu = false },
+                containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
+                shadowElevation = 16.dp,
+                modifier = Modifier
+                    .width(200.dp)
+                    .padding(
+                        vertical = 0.dp,
+                        horizontal = 0.dp
+                    ),
+                offset = DpOffset(x = (-100).dp, y = 30.dp)
+            ) {
+                DropdownMenuButton(
+                    onClick = {},
+                    text = "Menu"
+                )
+                DropdownMenuButton(
+                    onClick = {},
+                    text = "Menu"
+                )
+                DropdownMenuButton(
+                    onClick = {},
+                    text = "Menu"
+                )
+                DropdownMenuButton(
+                    onClick = {},
+                    text = "Menu"
+                )
+            }
+            DropdownMenu(
+                expanded = expandedMainMenu,
+                onDismissRequest = { expandedMainMenu = false },
+                containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
+                shadowElevation = 16.dp,
+                modifier = Modifier
+                    .width(120.dp)
+                    .padding(
+                        vertical = 0.dp,
+                        horizontal = 0.dp
+                    ),
+                offset = DpOffset(x = 25.dp, y = 30.dp)
+            ) {
+                DropdownMenuButton(
+                    onClick = { expandedFileMenu = !expandedFileMenu },
+                    text = "File"
+                )
+                DropdownMenuButton(
+                    onClick = {},
+                    text = "Edit"
+                )
+                DropdownMenuButton(
+                    onClick = {},
+                    text = "Selection"
+                )
+                DropdownMenuButton(
+                    onClick = {},
+                    text = "View"
+                )
+                DropdownMenuButton(
+                    onClick = {},
+                    text = "Run"
+                )
+                DropdownMenuButton(
+                    onClick = {},
+                    text = "Terminal"
+                )
+                HorizontalDivider(
+                    modifier = Modifier.padding(vertical = 5.dp),
+                    color = MaterialTheme.colorScheme.outlineVariant
+                )
+                DropdownMenuButton(
+                    onClick = {},
+                    text = "Settings"
+                )
+                DropdownMenuButton(
+                    onClick = {},
+                    text = "Help"
+                )
+            }
         }
     }
 }
