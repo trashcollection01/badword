@@ -101,7 +101,7 @@ fun DropdownMenuButton(
         text = {
             Text(
                 text = text,
-                style = MaterialTheme.typography.labelMedium
+                style = MaterialTheme.typography.labelSmall
             )
         },
         modifier = Modifier
