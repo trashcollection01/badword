@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PancodeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    CustomMainMenu(
+                    WorkspaceScreen(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }

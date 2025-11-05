@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -27,6 +28,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.composables.defic24
 import net.letmethingk.pancode.ui.components.CustomMainMenu
+import net.letmethingk.pancode.ui.components.Overlay
+import net.letmethingk.pancode.ui.components.TransparentOverlay
 import net.letmethingk.pancode.ui.components.reusable.ButtonMedium
 import net.letmethingk.pancode.ui.components.reusable.IconButton24
 import net.letmethingk.pancode.ui.theme.PancodeTheme
@@ -36,6 +39,7 @@ fun WorkspaceScreen(
     modifier: Modifier = Modifier
 ) {
     var showWelcomeDialog by remember { mutableStateOf(true) }
+    var showMainMenu by remember { mutableStateOf(false) }
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -71,7 +75,14 @@ fun WorkspaceScreen(
                     )
                 }
             }
-            CustomMainMenu()
+//            TransparentOverlay()
+            IconButton24(
+                onClick = {
+                    showMainMenu = !showMainMenu
+                },
+                imageVector = defic24,
+                contentDescription = ""
+            )
         }
         Row(
             modifier = Modifier
@@ -85,6 +96,13 @@ fun WorkspaceScreen(
 //    if (showWelcomeDialog) {
 //        WelcomeDialog(onConfirm = { showWelcomeDialog = false })
 //    }
+    if (showMainMenu) {
+        TransparentOverlay(onClick = { showMainMenu = false }) {
+            CustomMainMenu(
+                modifier = Modifier.offset(x = 71.dp, y = 74.dp)
+            )
+        }
+    }
 }
 
 @Composable

@@ -14,6 +14,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -94,7 +95,7 @@ fun IconButton24(
 @Composable
 fun DropdownMenuButton(
     onClick: () -> Unit,
-    text: String
+    text: String = "Text"
 ) {
     DropdownMenuItem(
         onClick = onClick,
@@ -106,7 +107,7 @@ fun DropdownMenuButton(
         },
         modifier = Modifier
             .height(35.dp)
-            .background(color = MaterialTheme.colorScheme.surfaceContainerLow)
+            .background(color = Color.Transparent)
     )
 }
 
