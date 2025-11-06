@@ -105,52 +105,6 @@ fun WorkspaceScreen(
     }
 }
 
-@Composable
-fun WelcomeDialog(
-    onConfirm: () -> Unit
-) {
-    Dialog(
-        onDismissRequest = { onConfirm }
-    ) {
-        Column(
-            modifier = Modifier
-                .width(325.dp)
-                .height(400.dp)
-                .background(
-                    color = MaterialTheme.colorScheme.surfaceContainerLow,
-                    shape = RoundedCornerShape(25.dp)
-                )
-                .padding(all = 20.dp),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Column {
-                Text(
-                    text = "Welcome to Pancode",
-                    style = MaterialTheme.typography.headlineMedium
-                )
-                Spacer(modifier = Modifier.height(15.dp))
-                Text(
-                    text = "Just with your mobile device," +
-                            "you can do coding.",
-                    style = MaterialTheme.typography.titleMedium
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                Text(
-                    text = "Pancode is a code editor developed to make technology easier for people to access. " +
-                            "Conventional code editors can only be accessed on a PC, some people don't have a PC. " +
-                            "That's why we build Pancode.",
-                    style = MaterialTheme.typography.bodyMedium,
-                    textAlign = TextAlign.Justify
-                )
-            }
-            ButtonMedium(
-                onClick = onConfirm,
-                text = "Loremo"
-            )
-        }
-    }
-}
 
 @Preview(showBackground = true)
 @Composable
