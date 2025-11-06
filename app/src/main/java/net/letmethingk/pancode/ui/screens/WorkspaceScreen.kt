@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,14 +26,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import net.letmethingk.pancode.ui.components.ButtonMedium
-import net.letmethingk.pancode.ui.theme.PancodeTheme
+import com.composables.defic24
+import net.letmethingk.pancode.ui.components.CustomMainMenu
 import net.letmethingk.pancode.ui.components.Overlay
+import net.letmethingk.pancode.ui.components.TransparentOverlay
+import net.letmethingk.pancode.ui.components.reusable.ButtonMedium
+import net.letmethingk.pancode.ui.components.reusable.IconButton24
+import net.letmethingk.pancode.ui.theme.PancodeTheme
 
 @Composable
 fun WorkspaceScreen(
     modifier: Modifier = Modifier
 ) {
+    var showWelcomeDialog by remember { mutableStateOf(true) }
+    var showMainMenu by remember { mutableStateOf(false) }
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -44,8 +52,37 @@ fun WorkspaceScreen(
                 .fillMaxWidth()
                 .height(60.dp)
                 .background(color = MaterialTheme.colorScheme.surface)
+                .padding(horizontal = 15.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-
+            Row {
+                IconButton24(
+                    onClick = {},
+                    imageVector = defic24,
+                    contentDescription = "drawer-menu"
+                )
+                Spacer(modifier = Modifier.width(15.dp))
+                Row() {
+                    Icon(
+                        imageVector = defic24,
+                        contentDescription = null
+                    )
+                    Spacer(modifier = Modifier.width(7.dp))
+                    Text(
+                        text = "Pancode",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                }
+            }
+//            TransparentOverlay()
+            IconButton24(
+                onClick = {
+                    showMainMenu = !showMainMenu
+                },
+                imageVector = defic24,
+                contentDescription = ""
+            )
         }
         Row(
             modifier = Modifier
@@ -56,7 +93,18 @@ fun WorkspaceScreen(
 
         }
     }
+//    if (showWelcomeDialog) {
+//        WelcomeDialog(onConfirm = { showWelcomeDialog = false })
+//    }
+    if (showMainMenu) {
+        TransparentOverlay(onClick = { showMainMenu = false }) {
+            CustomMainMenu(
+                modifier = Modifier.offset(x = 71.dp, y = 74.dp)
+            )
+        }
+    }
 }
+
 
 @Preview(showBackground = true)
 @Composable
