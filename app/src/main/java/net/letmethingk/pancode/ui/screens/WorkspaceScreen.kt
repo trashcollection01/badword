@@ -93,9 +93,6 @@ fun WorkspaceScreen(
 
         }
     }
-//    if (showWelcomeDialog) {
-//        WelcomeDialog(onConfirm = { showWelcomeDialog = false })
-//    }
     if (showMainMenu) {
         TransparentOverlay(onClick = { showMainMenu = false }) {
             CustomMainMenu(
