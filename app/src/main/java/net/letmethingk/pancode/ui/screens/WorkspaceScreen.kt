@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,17 +26,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import com.composables.defic12
 import com.composables.defic24
-import net.letmethingk.pancode.ui.components.ButtonMedium
-import net.letmethingk.pancode.ui.components.IconButton24
-import net.letmethingk.pancode.ui.theme.PancodeTheme
+import net.letmethingk.pancode.ui.components.CustomMainMenu
 import net.letmethingk.pancode.ui.components.Overlay
+import net.letmethingk.pancode.ui.components.TransparentOverlay
+import net.letmethingk.pancode.ui.components.reusable.ButtonMedium
+import net.letmethingk.pancode.ui.components.reusable.IconButton24
+import net.letmethingk.pancode.ui.theme.PancodeTheme
 
 @Composable
 fun WorkspaceScreen(
     modifier: Modifier = Modifier
 ) {
+    var showWelcomeDialog by remember { mutableStateOf(true) }
+    var showMainMenu by remember { mutableStateOf(false) }
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -71,12 +75,14 @@ fun WorkspaceScreen(
                     )
                 }
             }
+//            TransparentOverlay()
             IconButton24(
-                onClick = {},
+                onClick = {
+                    showMainMenu = !showMainMenu
+                },
                 imageVector = defic24,
-                contentDescription = "drawer-menu"
+                contentDescription = ""
             )
-
         }
         Row(
             modifier = Modifier
@@ -87,7 +93,15 @@ fun WorkspaceScreen(
 
         }
     }
+    if (showMainMenu) {
+        TransparentOverlay(onClick = { showMainMenu = false }) {
+            CustomMainMenu(
+                modifier = Modifier.offset(x = 71.dp, y = 74.dp)
+            )
+        }
+    }
 }
+
 
 @Preview(showBackground = true)
 @Composable

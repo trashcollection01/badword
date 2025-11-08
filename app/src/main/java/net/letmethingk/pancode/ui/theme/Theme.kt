@@ -32,7 +32,7 @@ private val DarkColorScheme = darkColorScheme(
 //    surfaceContainerHigh = Darkgrey,
 
     outline = Grey,
-    outlineVariant = Grey,
+    outlineVariant = DarkgreyV2,
 
     error = Red,
     onError = White,
