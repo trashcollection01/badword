@@ -31,7 +31,7 @@ import com.composables.defic24
 import net.letmethingk.pancode.ui.components.BreadcrumbPath
 import net.letmethingk.pancode.ui.components.CustomMainMenu
 import net.letmethingk.pancode.ui.components.Overlay
-import net.letmethingk.pancode.ui.components.TransparentOverlay
+import net.letmethingk.pancode.ui.components.TransparentHeaderOverlay
 import net.letmethingk.pancode.ui.components.reusable.ButtonMedium
 import net.letmethingk.pancode.ui.components.reusable.DropdownMenuButton
 import net.letmethingk.pancode.ui.components.reusable.IconButton24
@@ -70,10 +70,9 @@ fun WorkspaceScreen(
                 Spacer(modifier = Modifier.width(25.dp))
                 BreadcrumbPath(
                     onClick = { showMenuBreadCrumbs = !showMenuBreadCrumbs },
-                    isShow = showMenuBreadCrumbs
+                    isShowPath = showMenuBreadCrumbs
                 )
             }
-//            TransparentOverlay()
             IconButton24(
                 onClick = { showMainMenu = !showMainMenu },
                 imageVector = defic24,
@@ -90,16 +89,14 @@ fun WorkspaceScreen(
         }
     }
     if (showMainMenu) {
-        TransparentOverlay(onClick = { showMainMenu = false }) {
+        TransparentHeaderOverlay(onClick = { showMainMenu = false }) {
             CustomMainMenu(
                 modifier = Modifier.offset(x = 71.dp, y = 74.dp)
             )
         }
     }
     if (showMenuBreadCrumbs) {
-        TransparentOverlay(onClick = {
-            showMenuBreadCrumbs = false
-        }) {
+        TransparentHeaderOverlay(onClick = { showMenuBreadCrumbs = false }) {
             Submenu(
                 content = {
                     DropdownMenuButton(

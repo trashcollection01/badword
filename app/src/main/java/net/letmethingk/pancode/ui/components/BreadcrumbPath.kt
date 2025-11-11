@@ -21,15 +21,14 @@ import com.composables.defic24
 import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
-fun BreadcrumbPath(onClick: () -> Unit, isShow: Boolean) {
-    var showBreadcrumb by remember { mutableStateOf(isShow) }
+fun BreadcrumbPath(onClick: () -> Unit, isShowPath: Boolean) {
     Row(modifier = Modifier.clickable(onClick = onClick)) {
         Icon(
             imageVector = defic24,
             contentDescription = null
         )
         Spacer(modifier = Modifier.width(7.dp))
-        when(showBreadcrumb) {
+        when(isShowPath) {
             false -> { Text(
                     text = "Pancode",
                     style = MaterialTheme.typography.titleMedium
