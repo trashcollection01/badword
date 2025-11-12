@@ -28,7 +28,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.composables.defic24
-import net.letmethingk.pancode.ui.components.BreadcrumbPath
 import net.letmethingk.pancode.ui.components.CustomMainMenu
 import net.letmethingk.pancode.ui.components.Overlay
 import net.letmethingk.pancode.ui.components.TransparentHeaderOverlay
@@ -42,7 +41,7 @@ import net.letmethingk.pancode.ui.theme.PancodeTheme
 fun WorkspaceScreen(
     modifier: Modifier = Modifier
 ) {
-    var showMenuBreadCrumbs by remember { mutableStateOf(false) }
+    var showPathMenu by remember { mutableStateOf(true) }
     var showWelcomeDialog by remember { mutableStateOf(true) }
     var showMainMenu by remember { mutableStateOf(false) }
     Column(
@@ -68,10 +67,17 @@ fun WorkspaceScreen(
                     contentDescription = "drawer-menu"
                 )
                 Spacer(modifier = Modifier.width(25.dp))
-                BreadcrumbPath(
-                    onClick = { showMenuBreadCrumbs = !showMenuBreadCrumbs },
-                    isShowPath = showMenuBreadCrumbs
-                )
+                Row(modifier = Modifier.clickable(onClick = {showPathMenu = !showPathMenu})) {
+                    Icon(
+                        imageVector = defic24,
+                        contentDescription = null
+                    )
+                    Spacer(modifier = Modifier.width(7.dp))
+                    Text(
+                        text = "Pancode",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                }
             }
             IconButton24(
                 onClick = { showMainMenu = !showMainMenu },
@@ -95,8 +101,8 @@ fun WorkspaceScreen(
             )
         }
     }
-    if (showMenuBreadCrumbs) {
-        TransparentHeaderOverlay(onClick = { showMenuBreadCrumbs = false }) {
+    if (showPathMenu) {
+        TransparentHeaderOverlay(onClick = { showPathMenu = false }) {
             Submenu(
                 content = {
                     DropdownMenuButton(
@@ -108,7 +114,7 @@ fun WorkspaceScreen(
                         text = "Close folder"
                     )
                 },
-                modifier = Modifier.offset(x = 65.dp, y = 74.dp)
+                modifier = Modifier.offset(x = 65.dp, y = (-5).dp)
             )
         }
     }
