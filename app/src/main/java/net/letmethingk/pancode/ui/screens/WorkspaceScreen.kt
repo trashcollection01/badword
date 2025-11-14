@@ -1,6 +1,8 @@
 package net.letmethingk.pancode.ui.screens
 
+import androidx.compose.foundation.OverscrollEffect
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,6 +13,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -32,6 +36,7 @@ import net.letmethingk.pancode.ui.components.Overlay
 import net.letmethingk.pancode.ui.components.TransparentOverlay
 import net.letmethingk.pancode.ui.components.reusable.ButtonMedium
 import net.letmethingk.pancode.ui.components.reusable.IconButton24
+import net.letmethingk.pancode.ui.components.reusable.TaskbarFile
 import net.letmethingk.pancode.ui.theme.PancodeTheme
 
 @Composable
@@ -89,7 +94,17 @@ fun WorkspaceScreen(
                 .fillMaxWidth()
                 .height(35.dp)
                 .background(color = MaterialTheme.colorScheme.surfaceVariant)
+                .horizontalScroll(
+                    state = rememberScrollState(),
+                    overscrollEffect = null
+                )
         ) {
+            TaskbarFile("index.html",{})
+            TaskbarFile("index.php",{})
+            TaskbarFile("index.css",{})
+            TaskbarFile("index.html",{})
+            TaskbarFile("index.php",{})
+            TaskbarFile("index.css",{})
 
         }
     }
