@@ -1,6 +1,7 @@
 package net.letmethingk.pancode.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,15 +30,18 @@ import androidx.compose.ui.window.Dialog
 import com.composables.defic24
 import net.letmethingk.pancode.ui.components.CustomMainMenu
 import net.letmethingk.pancode.ui.components.Overlay
-import net.letmethingk.pancode.ui.components.TransparentOverlay
+import net.letmethingk.pancode.ui.components.TransparentHeaderOverlay
 import net.letmethingk.pancode.ui.components.reusable.ButtonMedium
+import net.letmethingk.pancode.ui.components.reusable.DropdownMenuButton
 import net.letmethingk.pancode.ui.components.reusable.IconButton24
+import net.letmethingk.pancode.ui.components.reusable.Submenu
 import net.letmethingk.pancode.ui.theme.PancodeTheme
 
 @Composable
 fun WorkspaceScreen(
     modifier: Modifier = Modifier
 ) {
+    var showPathMenu by remember { mutableStateOf(true) }
     var showWelcomeDialog by remember { mutableStateOf(true) }
     var showMainMenu by remember { mutableStateOf(false) }
     Column(
@@ -62,8 +66,8 @@ fun WorkspaceScreen(
                     imageVector = defic24,
                     contentDescription = "drawer-menu"
                 )
-                Spacer(modifier = Modifier.width(15.dp))
-                Row() {
+                Spacer(modifier = Modifier.width(25.dp))
+                Row(modifier = Modifier.clickable(onClick = {showPathMenu = !showPathMenu})) {
                     Icon(
                         imageVector = defic24,
                         contentDescription = null
@@ -75,11 +79,8 @@ fun WorkspaceScreen(
                     )
                 }
             }
-//            TransparentOverlay()
             IconButton24(
-                onClick = {
-                    showMainMenu = !showMainMenu
-                },
+                onClick = { showMainMenu = !showMainMenu },
                 imageVector = defic24,
                 contentDescription = ""
             )
@@ -94,9 +95,26 @@ fun WorkspaceScreen(
         }
     }
     if (showMainMenu) {
-        TransparentOverlay(onClick = { showMainMenu = false }) {
+        TransparentHeaderOverlay(onClick = { showMainMenu = false }) {
             CustomMainMenu(
                 modifier = Modifier.offset(x = 71.dp, y = 74.dp)
+            )
+        }
+    }
+    if (showPathMenu) {
+        TransparentHeaderOverlay(onClick = { showPathMenu = false }) {
+            Submenu(
+                content = {
+                    DropdownMenuButton(
+                        onClick = {},
+                        text = "Open..."
+                    )
+                    DropdownMenuButton(
+                        onClick = {},
+                        text = "Close folder"
+                    )
+                },
+                modifier = Modifier.offset(x = 65.dp, y = (-5).dp)
             )
         }
     }
