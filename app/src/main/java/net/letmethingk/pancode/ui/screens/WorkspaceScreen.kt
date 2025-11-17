@@ -31,6 +31,7 @@ import com.composables.defic24
 import net.letmethingk.pancode.ui.components.CustomMainMenu
 import net.letmethingk.pancode.ui.components.Overlay
 import net.letmethingk.pancode.ui.components.TransparentHeaderOverlay
+import net.letmethingk.pancode.ui.components.WelcomeDialog
 import net.letmethingk.pancode.ui.components.reusable.ButtonMedium
 import net.letmethingk.pancode.ui.components.reusable.DropdownMenuButton
 import net.letmethingk.pancode.ui.components.reusable.IconButton24
@@ -41,8 +42,8 @@ import net.letmethingk.pancode.ui.theme.PancodeTheme
 fun WorkspaceScreen(
     modifier: Modifier = Modifier
 ) {
-    var showPathMenu by remember { mutableStateOf(true) }
-    var showWelcomeDialog by remember { mutableStateOf(true) }
+    var showPathMenu by remember { mutableStateOf(false) }
+    var showWelcomeDialog by remember { mutableStateOf(false) }
     var showMainMenu by remember { mutableStateOf(false) }
     Column(
         modifier = modifier
@@ -93,6 +94,9 @@ fun WorkspaceScreen(
         ) {
 
         }
+    }
+    Overlay {
+        WelcomeDialog(onConfirm = {})
     }
     if (showMainMenu) {
         TransparentHeaderOverlay(onClick = { showMainMenu = false }) {
