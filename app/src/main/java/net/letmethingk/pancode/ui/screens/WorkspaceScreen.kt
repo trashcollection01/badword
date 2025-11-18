@@ -38,12 +38,8 @@ import net.letmethingk.pancode.ui.components.reusable.Submenu
 import net.letmethingk.pancode.ui.theme.PancodeTheme
 
 @Composable
-fun WorkspaceScreen(
-    modifier: Modifier = Modifier
-) {
-    var showPathMenu by remember { mutableStateOf(true) }
-    var showWelcomeDialog by remember { mutableStateOf(true) }
-    var showMainMenu by remember { mutableStateOf(false) }
+fun WorkspaceScreen(modifier: Modifier = Modifier) {
+    var showOpt by remember { mutableStateOf<String?>(null) }
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -67,7 +63,13 @@ fun WorkspaceScreen(
                     contentDescription = "drawer-menu"
                 )
                 Spacer(modifier = Modifier.width(25.dp))
-                Row(modifier = Modifier.clickable(onClick = {showPathMenu = !showPathMenu})) {
+                Row(modifier = Modifier.clickable(onClick = {
+                    when {
+                        showOpt == null -> { showOpt = "path-menu" }
+                        showOpt != "path-menu" -> { showOpt = "path-menu" }
+                        else -> { showOpt = null }
+                    }
+                })) {
                     Icon(
                         imageVector = defic24,
                         contentDescription = null
@@ -80,7 +82,13 @@ fun WorkspaceScreen(
                 }
             }
             IconButton24(
-                onClick = { showMainMenu = !showMainMenu },
+                onClick = {
+                    when {
+                        showOpt == null -> { showOpt = "main-menu" }
+                        showOpt != "main-menu" -> { showOpt = "main-menu" }
+                        else -> { showOpt = null }
+                    }
+                },
                 imageVector = defic24,
                 contentDescription = ""
             )
@@ -94,28 +102,30 @@ fun WorkspaceScreen(
 
         }
     }
-    if (showMainMenu) {
-        TransparentHeaderOverlay(onClick = { showMainMenu = false }) {
-            CustomMainMenu(
-                modifier = Modifier.offset(x = 71.dp, y = 74.dp)
-            )
+    when(showOpt) {
+        "main-menu" -> {
+            TransparentHeaderOverlay(onClick = { showOpt = null }) {
+                CustomMainMenu(
+                    modifier = Modifier.offset(x = 71.dp, y = 74.dp)
+                )
+            }
         }
-    }
-    if (showPathMenu) {
-        TransparentHeaderOverlay(onClick = { showPathMenu = false }) {
-            Submenu(
-                content = {
-                    DropdownMenuButton(
-                        onClick = {},
-                        text = "Open..."
-                    )
-                    DropdownMenuButton(
-                        onClick = {},
-                        text = "Close folder"
-                    )
-                },
-                modifier = Modifier.offset(x = 65.dp, y = (-5).dp)
-            )
+        "path-menu" -> {
+            TransparentHeaderOverlay(onClick = { showOpt = null }) {
+                Submenu(
+                    content = {
+                        DropdownMenuButton(
+                            onClick = {},
+                            text = "Open..."
+                        )
+                        DropdownMenuButton(
+                            onClick = {},
+                            text = "Close folder"
+                        )
+                    },
+                    modifier = Modifier.offset(x = 65.dp, y = (-5).dp)
+                )
+            }
         }
     }
 }
