@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.composables.defic24
 import net.letmethingk.pancode.ui.components.CustomMainMenu
+import net.letmethingk.pancode.ui.components.DrawerMenu
 import net.letmethingk.pancode.ui.components.Overlay
 import net.letmethingk.pancode.ui.components.TransparentHeaderOverlay
 import net.letmethingk.pancode.ui.components.reusable.ButtonMedium
@@ -101,6 +102,12 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
         ) {
 
         }
+    }
+    Overlay(
+        onClick = { showOpt = "main-menu" },
+        alignment = Alignment.TopStart
+    ) {
+        DrawerMenu()
     }
     when(showOpt) {
         "main-menu" -> {

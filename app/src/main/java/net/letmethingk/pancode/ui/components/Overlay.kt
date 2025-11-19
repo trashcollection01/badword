@@ -15,12 +15,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun Overlay(content: @Composable () -> Unit) {
+fun Overlay(
+    onClick: () -> Unit,
+    alignment: Alignment,
+    content: @Composable () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .clickable(
+                onClick = onClick,
+                indication = null,
+                interactionSource = remember { MutableInteractionSource() },
+            )
             .background(color = Color(0x70000000)),
-        contentAlignment = Alignment.Center
+        contentAlignment = alignment
     ) {
         content()
     }

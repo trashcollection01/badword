@@ -17,6 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.ui.theme.PancodeTheme
 
@@ -76,13 +78,13 @@ fun ButtonMedium(
 fun IconButton24(
     onClick: () -> Unit,
     imageVector: ImageVector,
+    size: Dp = 24.dp,
     contentDescription: String
 ) {
     IconButton(
         onClick = onClick,
         modifier = Modifier
-            .size(24.dp),
-        shape = RoundedCornerShape(0.dp)
+            .size(size = size)
     ) {
         Icon(
             imageVector = imageVector,
