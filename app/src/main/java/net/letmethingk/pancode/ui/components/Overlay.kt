@@ -1,5 +1,9 @@
 package net.letmethingk.pancode.ui.components
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -17,21 +21,28 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun Overlay(
     onClick: () -> Unit,
+    animation: Boolean,
     alignment: Alignment,
     content: @Composable () -> Unit
 ) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .clickable(
-                onClick = onClick,
-                indication = null,
-                interactionSource = remember { MutableInteractionSource() },
-            )
-            .background(color = Color(0x70000000)),
-        contentAlignment = alignment
+    AnimatedVisibility(
+        visible = animation,
+        enter = fadeIn(initialAlpha = 0.3F, animationSpec = tween(200)),
+        exit = fadeOut(targetAlpha = 1F, animationSpec = tween(200))
     ) {
-        content()
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .clickable(
+                    onClick = onClick,
+                    indication = null,
+                    interactionSource = remember { MutableInteractionSource() },
+                )
+                .background(color = Color(0x70000000)),
+            contentAlignment = alignment
+        ) {
+            content()
+        }
     }
 }
 

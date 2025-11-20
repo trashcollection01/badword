@@ -1,5 +1,7 @@
 package net.letmethingk.pancode.ui.screens
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -23,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -59,7 +62,9 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
         ) {
             Row {
                 IconButton24(
-                    onClick = {},
+                    onClick = {
+                        showOpt = "drawer-menu"
+                    },
                     imageVector = defic24,
                     contentDescription = "drawer-menu"
                 )
@@ -103,12 +108,6 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
 
         }
     }
-    Overlay(
-        onClick = { showOpt = "main-menu" },
-        alignment = Alignment.TopStart
-    ) {
-        DrawerMenu()
-    }
     when(showOpt) {
         "main-menu" -> {
             TransparentHeaderOverlay(onClick = { showOpt = null }) {
@@ -132,6 +131,17 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
                     },
                     modifier = Modifier.offset(x = 65.dp, y = (-5).dp)
                 )
+            }
+        }
+        "drawer-menu" -> {
+            Overlay(
+                onClick = {
+                    showOpt = null
+                },
+                animation = false,
+                alignment = Alignment.TopStart
+            ) {
+                DrawerMenu()
             }
         }
     }
