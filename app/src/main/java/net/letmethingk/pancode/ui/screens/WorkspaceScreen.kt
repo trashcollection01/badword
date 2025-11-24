@@ -1,5 +1,7 @@
 package net.letmethingk.pancode.ui.screens
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -23,12 +25,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.composables.defic24
 import net.letmethingk.pancode.ui.components.CustomMainMenu
+import net.letmethingk.pancode.ui.components.DrawerMenu
 import net.letmethingk.pancode.ui.components.Overlay
 import net.letmethingk.pancode.ui.components.TransparentHeaderOverlay
 import net.letmethingk.pancode.ui.components.reusable.ButtonMedium
@@ -40,6 +44,7 @@ import net.letmethingk.pancode.ui.theme.PancodeTheme
 @Composable
 fun WorkspaceScreen(modifier: Modifier = Modifier) {
     var showOpt by remember { mutableStateOf<String?>(null) }
+    var isAnimate by remember { mutableStateOf(false) }
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -58,7 +63,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
         ) {
             Row {
                 IconButton24(
-                    onClick = {},
+                    onClick = { isAnimate = !isAnimate },
                     imageVector = defic24,
                     contentDescription = "drawer-menu"
                 )
@@ -90,7 +95,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
                     }
                 },
                 imageVector = defic24,
-                contentDescription = ""
+                contentDescription = "main-menu"
             )
         }
         Row(
@@ -127,6 +132,15 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
                 )
             }
         }
+    }
+    Overlay(
+        onClick = {
+            isAnimate = !isAnimate
+        },
+        isShowAnimate = isAnimate,
+        alignment = Alignment.TopStart
+    ) {
+        DrawerMenu(isShowAnimate = isAnimate)
     }
 }
 
