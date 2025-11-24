@@ -12,23 +12,28 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import net.letmethingk.pancode.ui.theme.PancodeTheme
 
 @Composable
 fun Overlay(
     onClick: () -> Unit,
-    animation: Boolean,
+    isShowAnimate: Boolean,
     alignment: Alignment,
     content: @Composable () -> Unit
 ) {
     AnimatedVisibility(
-        visible = animation,
-        enter = fadeIn(initialAlpha = 0.3F, animationSpec = tween(200)),
-        exit = fadeOut(targetAlpha = 1F, animationSpec = tween(200))
+        visible = isShowAnimate,
+        enter = fadeIn(initialAlpha = 0F, animationSpec = tween(200)),
+        exit = fadeOut(targetAlpha = 0F, animationSpec = tween(400))
     ) {
         Box(
             modifier = Modifier
@@ -62,5 +67,14 @@ fun TransparentHeaderOverlay(
             )
     ) {
         content()
+    }
+}
+
+@Preview
+@Composable
+fun PreviewOverlay() {
+    var ishh by remember { mutableStateOf(false) }
+    PancodeTheme {
+        Overlay(onClick = {ishh = !ishh}, isShowAnimate = ishh, alignment = Alignment.Center ) { }
     }
 }

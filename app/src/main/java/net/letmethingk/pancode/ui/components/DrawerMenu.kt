@@ -1,5 +1,9 @@
 package net.letmethingk.pancode.ui.components
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -24,25 +28,33 @@ import net.letmethingk.pancode.ui.components.reusable.IconButton24
 import net.letmethingk.pancode.ui.theme.PancodeTheme
 
 @Composable
-fun DrawerMenu() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth(fraction = 0.7F)
-            .fillMaxHeight()
-            .clickable(onClick = {}, enabled = false)
-            .background(color = MaterialTheme.colorScheme.surfaceVariant)
+fun DrawerMenu(
+    isShowAnimate: Boolean
+) {
+    AnimatedVisibility(
+        visible = isShowAnimate,
+        enter = slideInHorizontally(animationSpec = tween(400), initialOffsetX = {-it / 2}),
+        exit = slideOutHorizontally(animationSpec = tween(400),)
     ) {
-        Column(
+        Row(
             modifier = Modifier
-                .width(45.dp)
+                .fillMaxWidth(fraction = 0.7F)
                 .fillMaxHeight()
-                .background(color = MaterialTheme.colorScheme.surface)
-                .padding(vertical = 100.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .clickable(onClick = {}, enabled = false)
+                .background(color = MaterialTheme.colorScheme.surfaceVariant)
         ) {
-            IconButton24(onClick = {}, imageVector = defic24, contentDescription = "", size = 45.dp)
-            IconButton24(onClick = {}, imageVector = defic24, contentDescription = "", size = 45.dp)
-            IconButton24(onClick = {}, imageVector = defic24, contentDescription = "", size = 45.dp)
+            Column(
+                modifier = Modifier
+                    .width(45.dp)
+                    .fillMaxHeight()
+                    .background(color = MaterialTheme.colorScheme.surface)
+                    .padding(vertical = 100.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                IconButton24(onClick = {}, imageVector = defic24, contentDescription = "", size = 45.dp)
+                IconButton24(onClick = {}, imageVector = defic24, contentDescription = "", size = 45.dp)
+                IconButton24(onClick = {}, imageVector = defic24, contentDescription = "", size = 45.dp)
+            }
         }
     }
 }
@@ -54,7 +66,7 @@ fun PreviewDrawerMenu() {
         Column(
             modifier = Modifier.fillMaxSize().background(Color.Magenta)
         ) {
-            DrawerMenu()
+            DrawerMenu(isShowAnimate = true)
         }
     }
 }

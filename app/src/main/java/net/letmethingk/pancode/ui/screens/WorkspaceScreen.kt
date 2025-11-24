@@ -44,6 +44,7 @@ import net.letmethingk.pancode.ui.theme.PancodeTheme
 @Composable
 fun WorkspaceScreen(modifier: Modifier = Modifier) {
     var showOpt by remember { mutableStateOf<String?>(null) }
+    var isAnimate by remember { mutableStateOf(false) }
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -62,9 +63,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
         ) {
             Row {
                 IconButton24(
-                    onClick = {
-                        showOpt = "drawer-menu"
-                    },
+                    onClick = { isAnimate = !isAnimate },
                     imageVector = defic24,
                     contentDescription = "drawer-menu"
                 )
@@ -96,7 +95,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
                     }
                 },
                 imageVector = defic24,
-                contentDescription = ""
+                contentDescription = "main-menu"
             )
         }
         Row(
@@ -133,17 +132,15 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
                 )
             }
         }
-        "drawer-menu" -> {
-            Overlay(
-                onClick = {
-                    showOpt = null
-                },
-                animation = false,
-                alignment = Alignment.TopStart
-            ) {
-                DrawerMenu()
-            }
-        }
+    }
+    Overlay(
+        onClick = {
+            isAnimate = !isAnimate
+        },
+        isShowAnimate = isAnimate,
+        alignment = Alignment.TopStart
+    ) {
+        DrawerMenu(isShowAnimate = isAnimate)
     }
 }
 
