@@ -42,11 +42,10 @@ fun Menu(
     }
 }
 
-
 @Composable
 fun Submenu(
-    content: @Composable () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
 ) {
     Column(
         modifier = modifier
