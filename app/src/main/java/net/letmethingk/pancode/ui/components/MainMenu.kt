@@ -43,166 +43,148 @@ import net.letmethingk.pancode.ui.components.reusable.Submenu
 import net.letmethingk.pancode.ui.theme.PancodeTheme
 import net.letmethingk.pancode.ui.theme.ShadowColor
 
+/*
+ * Main Menu
+ * this is to usage in the workspace.
+ * there are many display functions here,
+ * like display main menu and submenu.
+ * */
 @Composable
-fun CustomMainMenu(
-    modifier: Modifier = Modifier
-) {
-    var showSubmenu by remember { mutableStateOf<String?>(null) }
+fun CustomMainMenu(modifier: Modifier = Modifier) {
+//    This int state determines what is active and display the menu
+    var showSubmenu by remember { mutableStateOf<Int?>(null) }
     Row (
         modifier = modifier
             .width(325.dp)
             .wrapContentHeight(),
         horizontalArrangement = Arrangement.End
     ) {
+//        This is to validate based on int number and display the menu
         when (showSubmenu) {
-            "File" -> FileSubmenu()
-            "Edit" -> EditSubmenu()
-            "Selection" -> SelectionSubmenu()
-            "View" -> ViewSubmenu()
-            "Run" -> RunSubmenu()
-            "Terminal" -> TerminalSubmenu()
-            "Settings" -> SettingsSubmenu()
-            "Help" -> HelpSubmenu()
+            1 -> FileSubmenu()
+            2 -> EditSubmenu()
+            3 -> SelectionSubmenu()
+            4 -> ViewSubmenu()
+            5 -> RunSubmenu()
+            6 -> TerminalSubmenu()
+            7 -> SettingsSubmenu()
+            8 -> HelpSubmenu()
         }
         Spacer(modifier = Modifier.width(5.dp))
-        Menu(
-            content = {
-                DropdownMenuButton(
-                    onClick = { showSubmenu = "File" },
-                    text = "File"
-                )
-                DropdownMenuButton(
-                    onClick = { showSubmenu = "Edit" },
-                    text = "Edit"
-                )
-                DropdownMenuButton(
-                    onClick = { showSubmenu = "Selection" },
-                    text = "Selection"
-                )
-                DropdownMenuButton(
-                    onClick = { showSubmenu = "View" },
-                    text = "View"
-                )
-                DropdownMenuButton(
-                    onClick = { showSubmenu = "Run" },
-                    text = "Run"
-                )
-                DropdownMenuButton(
-                    onClick = { showSubmenu = "Terminal" },
-                    text = "Terminal"
-                )
-                HorizontalDivider(
-                    modifier = Modifier.padding(vertical = 5.dp, horizontal = 10.dp),
-                    color = MaterialTheme.colorScheme.outline
-                )
-                DropdownMenuButton(
-                    onClick = { showSubmenu = "Settings" },
-                    text = "Settings"
-                )
-                DropdownMenuButton(
-                    onClick = { showSubmenu = "Help" },
-                    text = "Help"
-                )
-            }
-        )
+//        this is func to wrap up the DropdownMenuButton() to be 1 menu
+        Menu() {
+            DropdownMenuButton(
+                onClick = { showSubmenu = 1 },
+                text = "File"
+            )
+            DropdownMenuButton(
+                onClick = { showSubmenu = 2 },
+                text = "Edit"
+            )
+            DropdownMenuButton(
+                onClick = { showSubmenu = 3 },
+                text = "Selection"
+            )
+            DropdownMenuButton(
+                onClick = { showSubmenu = 4 },
+                text = "View"
+            )
+            DropdownMenuButton(
+                onClick = { showSubmenu = 5},
+                text = "Run"
+            )
+            DropdownMenuButton(
+                onClick = { showSubmenu = 6 },
+                text = "Terminal"
+            )
+            HorizontalDivider(
+                modifier = Modifier.padding(vertical = 5.dp, horizontal = 10.dp),
+                color = MaterialTheme.colorScheme.outline
+            )
+            DropdownMenuButton(
+                onClick = { showSubmenu = 7 },
+                text = "Settings"
+            )
+            DropdownMenuButton(
+                onClick = { showSubmenu = 8 },
+                text = "Help"
+            )
+        }
     }
 }
 
+//    Submenu
 @Composable
 fun FileSubmenu() {
-    Submenu(
-        content = {
-            DropdownMenuButton(
-                onClick = {},
-                text = "1"
-            )
-        },
-        modifier = Modifier.offset(x = 0.dp, y = 0.dp)
-    )
+    Submenu(modifier = Modifier.offset(x = 0.dp, y = 0.dp)) {
+        DropdownMenuButton(
+            onClick = {},
+            text = "1"
+        )
+    }
 }
 @Composable
 fun EditSubmenu() {
-    Submenu(
-        content = {
-            DropdownMenuButton(
-                onClick = {},
-                text = "2"
-            )
-        },
-        modifier = Modifier.offset(x = 0.dp, y = 35.dp)
-    )
+    Submenu(modifier = Modifier.offset(x = 0.dp, y = 35.dp)) {
+        DropdownMenuButton(
+            onClick = {},
+            text = "2"
+        )
+    }
 }
 @Composable
 fun SelectionSubmenu() {
-    Submenu(
-        content = {
-            DropdownMenuButton(
-                onClick = {},
-                text = "3"
-            )
-        },
-        modifier = Modifier.offset(x = 0.dp, y = 70.dp)
-    )
+    Submenu(modifier = Modifier.offset(x = 0.dp, y = 70.dp)) {
+        DropdownMenuButton(
+            onClick = {},
+            text = "3"
+        )
+    }
 }
 @Composable
 fun ViewSubmenu() {
-    Submenu(
-        content = {
-            DropdownMenuButton(
-                onClick = {},
-                text = "4"
-            )
-        },
-        modifier = Modifier.offset(x = 0.dp, y = 105.dp)
-    )
+    Submenu(modifier = Modifier.offset(x = 0.dp, y = 105.dp)) {
+        DropdownMenuButton(
+            onClick = {},
+            text = "4"
+        )
+    }
 }
 @Composable
 fun RunSubmenu() {
-    Submenu(
-        content = {
-            DropdownMenuButton(
-                onClick = {},
-                text = "5"
-            )
-        },
-        modifier = Modifier.offset(x = 0.dp, y = 140.dp)
-    )
+    Submenu(modifier = Modifier.offset(x = 0.dp, y = 140.dp)) {
+        DropdownMenuButton(
+            onClick = {},
+            text = "5"
+        )
+    }
 }
 @Composable
 fun TerminalSubmenu() {
-    Submenu(
-        content = {
-            DropdownMenuButton(
-                onClick = {},
-                text = "6"
-            )
-        },
-        modifier = Modifier.offset(x = 0.dp, y = 175.dp)
-    )
+    Submenu(modifier = Modifier.offset(x = 0.dp, y = 175.dp)) {
+        DropdownMenuButton(
+            onClick = {},
+            text = "6"
+        )
+    }
 }
 @Composable
 fun SettingsSubmenu() {
-    Submenu(
-        content = {
-            DropdownMenuButton(
-                onClick = {},
-                text = "7"
-            )
-        },
-        modifier = Modifier.offset(x = 0.dp, y = 221.dp)
-    )
+    Submenu(modifier = Modifier.offset(x = 0.dp, y = 221.dp)) {
+        DropdownMenuButton(
+            onClick = {},
+            text = "7"
+        )
+    }
 }
 @Composable
 fun HelpSubmenu() {
-    Submenu(
-        content = {
-            DropdownMenuButton(
-                onClick = {},
-                text = "8"
-            )
-        },
-        modifier = Modifier.offset(x = 0.dp, y = 256.dp)
-    )
+    Submenu(modifier = Modifier.offset(x = 0.dp, y = 256.dp)) {
+        DropdownMenuButton(
+            onClick = {},
+            text = "8"
+        )
+    }
 }
 
 @Preview()

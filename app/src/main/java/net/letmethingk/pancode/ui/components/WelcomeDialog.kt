@@ -20,13 +20,14 @@ import androidx.compose.ui.window.Dialog
 import net.letmethingk.pancode.ui.components.reusable.ButtonMedium
 import net.letmethingk.pancode.ui.theme.PancodeTheme
 
+/*
+ * Welcome Dialog
+ * Composable WelcomeDialog() to display
+ *
+ * */
 @Composable
-fun WelcomeDialog(
-    onConfirm: () -> Unit
-) {
-    Dialog(
-        onDismissRequest = { onConfirm }
-    ) {
+fun WelcomeDialog(onConfirm: () -> Unit) {
+    Dialog(onDismissRequest = { onConfirm }) {
         Column(
             modifier = Modifier
                 .width(325.dp)
@@ -39,6 +40,7 @@ fun WelcomeDialog(
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+//            Text content
             Column {
                 Text(
                     text = "Welcome to Pancode",

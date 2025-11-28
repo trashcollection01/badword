@@ -27,10 +27,13 @@ import com.composables.defic24
 import net.letmethingk.pancode.ui.components.reusable.IconButton24
 import net.letmethingk.pancode.ui.theme.PancodeTheme
 
+/*
+ * This is composable component to display drawer menu
+ *
+ * */
 @Composable
-fun DrawerMenu(
-    isShowAnimate: Boolean
-) {
+fun DrawerMenu(isShowAnimate: Boolean) {
+//    animation slide for drawer menu
     AnimatedVisibility(
         visible = isShowAnimate,
         enter = slideInHorizontally(animationSpec = tween(400), initialOffsetX = {-it / 2}),
@@ -43,6 +46,7 @@ fun DrawerMenu(
                 .clickable(onClick = {}, enabled = false)
                 .background(color = MaterialTheme.colorScheme.surfaceVariant)
         ) {
+//            drawer menu
             Column(
                 modifier = Modifier
                     .width(45.dp)
@@ -55,6 +59,7 @@ fun DrawerMenu(
                 IconButton24(onClick = {}, imageVector = defic24, contentDescription = "", size = 45.dp)
                 IconButton24(onClick = {}, imageVector = defic24, contentDescription = "", size = 45.dp)
             }
+//            content from menu
         }
     }
 }

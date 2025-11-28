@@ -22,8 +22,8 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.ui.theme.PancodeTheme
 
-
-//          BUTTON REGULAR          //
+//    Button Regular
+//    Button Regular size large w340 h50
 @Composable
 fun ButtonLarge(
     onClick: () -> Unit,
@@ -48,6 +48,7 @@ fun ButtonLarge(
         )
     }
 }
+//    Button Regular size medium w270 h40
 @Composable
 fun ButtonMedium(
     onClick: () -> Unit,
@@ -73,7 +74,7 @@ fun ButtonMedium(
     }
 }
 
-//          ICON BUTTON          //
+//    Icon Button
 @Composable
 fun IconButton24(
     onClick: () -> Unit,
@@ -93,7 +94,7 @@ fun IconButton24(
     }
 }
 
-//          DROPDOWN MENU BUTTON          //
+//    Dropdown menu Button
 @Composable
 fun DropdownMenuButton(
     onClick: () -> Unit,

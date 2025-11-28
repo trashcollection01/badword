@@ -41,7 +41,7 @@ import net.letmethingk.pancode.ui.theme.PancodeTheme
  * */
 @Composable
 fun WorkspaceScreen(modifier: Modifier = Modifier) {
-//    This state determines what is active and displays the menus
+//    This state determines what is active and displays the option menus
     val showOpt = remember { mutableStateListOf(true, false, false, false) }
 //    Workspace screen composable
     Column(
@@ -114,9 +114,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
         onClick = { showOpt[2] = false },
         isShowAnimate = showOpt[2]
     ) {
-        Submenu(
-            modifier = Modifier.offset(x = 65.dp, y = 55.dp)
-        ) {
+        Submenu(modifier = Modifier.offset(x = 65.dp, y = 55.dp)) {
             DropdownMenuButton(
                 onClick = {},
                 text = "Open..."

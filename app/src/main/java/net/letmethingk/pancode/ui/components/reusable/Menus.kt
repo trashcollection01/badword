@@ -17,9 +17,7 @@ import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.ui.theme.ShadowColor
 
 @Composable
-fun Menu(
-    content: @Composable () -> Unit
-) {
+fun Menu(content: @Composable () -> Unit) {
     Column(
         modifier = Modifier
             .width(120.dp)
