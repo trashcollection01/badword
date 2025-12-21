@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.ui.components.reusable
+package net.letmethingk.pancode.presentation.ui.components.reusable
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,7 +13,7 @@ import androidx.compose.ui.draw.dropShadow
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.shadow.Shadow
 import androidx.compose.ui.unit.dp
-import net.letmethingk.pancode.ui.theme.ShadowColor
+import net.letmethingk.pancode.presentation.ui.theme.ShadowColor
 
 @Composable
 fun Menu(content: @Composable () -> Unit) {

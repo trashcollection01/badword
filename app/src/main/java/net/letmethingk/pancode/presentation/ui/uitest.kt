@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.ui
+package net.letmethingk.pancode.presentation.ui
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
@@ -22,8 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import net.letmethingk.pancode.ui.components.reusable.ButtonLarge
-import net.letmethingk.pancode.ui.theme.PancodeTheme
+import net.letmethingk.pancode.presentation.ui.components.reusable.ButtonLarge
+import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 @Preview
 @Composable

@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.ui.theme
+package net.letmethingk.pancode.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

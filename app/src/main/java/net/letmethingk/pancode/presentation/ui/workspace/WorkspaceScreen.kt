@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.ui.screens
+package net.letmethingk.pancode.presentation.ui.workspace
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,24 +16,21 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.composables.defic24
-import net.letmethingk.pancode.ui.components.CustomMainMenu
-import net.letmethingk.pancode.ui.components.DrawerMenu
-import net.letmethingk.pancode.ui.components.reusable.Overlay
-import net.letmethingk.pancode.ui.components.reusable.DropdownMenuButton
-import net.letmethingk.pancode.ui.components.reusable.IconButton24
-import net.letmethingk.pancode.ui.components.reusable.Submenu
-import net.letmethingk.pancode.ui.components.reusable.TransparentOverlay
-import net.letmethingk.pancode.ui.theme.PancodeTheme
+import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
+import net.letmethingk.pancode.presentation.ui.workspace.component.CustomMainMenu
+import net.letmethingk.pancode.presentation.ui.workspace.component.DrawerMenu
+import net.letmethingk.pancode.presentation.ui.components.reusable.DropdownMenuButton
+import net.letmethingk.pancode.presentation.ui.components.reusable.IconButton24
+import net.letmethingk.pancode.presentation.ui.components.reusable.Overlay
+import net.letmethingk.pancode.presentation.ui.components.reusable.Submenu
+import net.letmethingk.pancode.presentation.ui.components.reusable.TransparentOverlay
+import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 /*
  * Workspace screen
@@ -103,7 +100,6 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
 //    Main menu
     TransparentOverlay(
         onClick = { showOpt[1] = false },
-        isShowAnimate = showOpt[1]
     ) {
         CustomMainMenu(
             modifier = Modifier.offset(x = 71.dp, y = 55.dp)
@@ -112,7 +108,6 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
 //    Path menu
     TransparentOverlay(
         onClick = { showOpt[2] = false },
-        isShowAnimate = showOpt[2]
     ) {
         Submenu(modifier = Modifier.offset(x = 65.dp, y = 55.dp)) {
             DropdownMenuButton(

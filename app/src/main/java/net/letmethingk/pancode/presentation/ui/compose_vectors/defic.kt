@@ -1,4 +1,4 @@
-package com.composables
+package net.letmethingk.pancode.presentation.ui.compose_vectors
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor

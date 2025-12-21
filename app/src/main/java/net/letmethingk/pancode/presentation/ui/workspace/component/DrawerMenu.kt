@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.ui.components
+package net.letmethingk.pancode.presentation.ui.workspace.component
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
@@ -6,14 +6,11 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
@@ -23,9 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.composables.defic24
-import net.letmethingk.pancode.ui.components.reusable.IconButton24
-import net.letmethingk.pancode.ui.theme.PancodeTheme
+import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
+import net.letmethingk.pancode.presentation.ui.components.reusable.IconButton24
+import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 /*
  * This is composable component to display drawer menu
@@ -55,9 +52,24 @@ fun DrawerMenu(isShowAnimate: Boolean) {
                     .padding(vertical = 100.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                IconButton24(onClick = {}, imageVector = defic24, contentDescription = "", size = 45.dp)
-                IconButton24(onClick = {}, imageVector = defic24, contentDescription = "", size = 45.dp)
-                IconButton24(onClick = {}, imageVector = defic24, contentDescription = "", size = 45.dp)
+                IconButton24(
+                    onClick = {},
+                    imageVector = defic24,
+                    contentDescription = "",
+                    size = 45.dp
+                )
+                IconButton24(
+                    onClick = {},
+                    imageVector = defic24,
+                    contentDescription = "",
+                    size = 45.dp
+                )
+                IconButton24(
+                    onClick = {},
+                    imageVector = defic24,
+                    contentDescription = "",
+                    size = 45.dp
+                )
             }
 //            content from menu
         }
