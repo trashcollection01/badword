@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -25,13 +26,12 @@ import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.presentation.ui.components.reusable.ButtonLarge
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
-@Preview
 @Composable
-fun Uitest() {
+fun Uitest(modifier: Modifier) {
     var animate by remember { mutableStateOf(false) }
     PancodeTheme {
         Column(
-            modifier = Modifier.fillMaxSize().background(Color.White),
+            modifier = modifier.fillMaxSize().background(MaterialTheme.colorScheme.background),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
