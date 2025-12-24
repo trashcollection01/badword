@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.workspace
+package net.letmethingk.pancode.presentation.ui.activity.workspace
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,8 +23,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
-import net.letmethingk.pancode.presentation.ui.workspace.component.CustomMainMenu
-import net.letmethingk.pancode.presentation.ui.workspace.component.DrawerMenu
+import net.letmethingk.pancode.presentation.ui.activity.workspace.component.CustomMainMenu
+import net.letmethingk.pancode.presentation.ui.activity.workspace.component.DrawerMenu
 import net.letmethingk.pancode.presentation.ui.components.reusable.DropdownMenuButton
 import net.letmethingk.pancode.presentation.ui.components.reusable.IconButton24
 import net.letmethingk.pancode.presentation.ui.components.reusable.Overlay

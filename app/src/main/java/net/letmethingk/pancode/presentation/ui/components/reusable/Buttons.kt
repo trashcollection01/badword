@@ -1,6 +1,7 @@
 package net.letmethingk.pancode.presentation.ui.components.reusable
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -31,9 +32,9 @@ fun ButtonLarge(
     Button(
         onClick = onClick,
         modifier = Modifier
-            .width(340.dp)
+            .fillMaxWidth()
             .height(50.dp),
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(15.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary,
             disabledContainerColor = MaterialTheme.colorScheme.primary,

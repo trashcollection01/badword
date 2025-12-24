@@ -8,7 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import net.letmethingk.pancode.presentation.ui.workspace.WorkspaceScreen
+import net.letmethingk.pancode.presentation.ui.Uitest
+import net.letmethingk.pancode.presentation.ui.activity.sign_in.LoginScreen
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,7 +19,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PancodeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    WorkspaceScreen(
+                    LoginScreen(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
