@@ -17,6 +17,7 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.input.TextFieldDecorator
 import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -28,13 +29,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.presentation.ui.components.reusable.ButtonLarge
+import net.letmethingk.pancode.presentation.ui.components.reusable.CustomTextField
 import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 @Composable
 fun LoginScreen(modifier: Modifier) {
     val inpName = rememberTextFieldState(initialText = "Memungkinkan Anda, ttttt F")
-    val inpPass = rememberTextFieldState(initialText = "")
+    val inpPass = rememberTextFieldState(initialText = "Mengunakan ganja")
     Column(
         verticalArrangement = Arrangement.Top,
         modifier = modifier
@@ -61,15 +63,14 @@ fun LoginScreen(modifier: Modifier) {
             )
         }
         Spacer(Modifier.height(100.dp))
-        BasicTextField(
-            state = inpName,
-            enabled = true,
-            lineLimits = TextFieldLineLimits.SingleLine,
-            textStyle = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
-                .background(color = MaterialTheme.colorScheme.outline)
+        CustomTextField(
+            input = inpName,
+            label = "Username"
+        )
+        Spacer(modifier = Modifier.height(25.dp))
+        CustomTextField(
+            input = inpPass,
+            label = "Password"
         )
         Spacer(Modifier.height(20.dp))
         Text(
