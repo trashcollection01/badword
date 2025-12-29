@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -83,10 +84,9 @@ fun RegisterScreen(modifier: Modifier) {
         )
         Spacer(Modifier.height(30.dp))
         Text(
-            text = "already have an account? Login",
+            text = "Already have an account? ",
             style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Start
+            modifier = Modifier.align(alignment = Alignment.Start),
         )
     }
 }

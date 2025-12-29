@@ -80,8 +80,7 @@ fun LoginScreen(modifier: Modifier) {
                 .clickable(
                     onClick = {}
                 )
-                .fillMaxWidth(),
-            textAlign = TextAlign.End
+                .align(alignment = Alignment.End),
         )
         Spacer(Modifier.height(35.dp))
         ButtonLarge(
@@ -92,11 +91,8 @@ fun LoginScreen(modifier: Modifier) {
         Text(
             text = "Don't have an account? Register",
             style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier
-                .fillMaxWidth(),
-            textAlign = TextAlign.Start
+            modifier = Modifier.align(alignment = Alignment.Start)
         )
-
     }
 }
 

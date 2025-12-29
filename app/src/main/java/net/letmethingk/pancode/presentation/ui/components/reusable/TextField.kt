@@ -1,5 +1,6 @@
 package net.letmethingk.pancode.presentation.ui.components.reusable
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,11 +10,13 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextLayoutInput
 import androidx.compose.ui.unit.dp
 
@@ -25,7 +28,9 @@ fun CustomTextField(input: TextFieldState, label: String) {
             .fillMaxWidth()
             .wrapContentHeight(),
         enabled = true,
-        textStyle = MaterialTheme.typography.bodyMedium,
+        textStyle = MaterialTheme.typography.bodyMedium.copy(
+            color = if (isSystemInDarkTheme()) Color.White else Color.Black
+        ),
         lineLimits = TextFieldLineLimits.SingleLine,
         decorator = { innerTextField ->
             Column {
