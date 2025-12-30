@@ -17,8 +17,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.LinkAnnotation
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLinkStyles
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withLink
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.presentation.ui.components.reusable.ButtonLarge
@@ -84,7 +90,25 @@ fun RegisterScreen(modifier: Modifier) {
         )
         Spacer(Modifier.height(30.dp))
         Text(
-            text = "Already have an account? ",
+            text = buildAnnotatedString {
+                append("Already have an account? ")
+                val link = LinkAnnotation.Clickable(
+                    tag = "onClick",
+                    styles = TextLinkStyles(
+                        style = SpanStyle(
+                            color = MaterialTheme.colorScheme.secondary,
+                            textDecoration = TextDecoration.None
+                        )
+                    ),
+                    // Do something
+                    linkInteractionListener = {
+                        println("diClick")
+                    }
+                )
+                withLink(link = link) {
+                    append(text = "Login")
+                }
+            },
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.align(alignment = Alignment.Start),
         )

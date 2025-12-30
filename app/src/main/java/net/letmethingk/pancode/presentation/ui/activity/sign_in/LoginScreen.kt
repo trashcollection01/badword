@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.input.TextFieldDecorator
 import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.rememberTextFieldState
@@ -25,18 +26,26 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.LinkAnnotation
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLinkStyles
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withLink
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.presentation.ui.components.reusable.ButtonLarge
 import net.letmethingk.pancode.presentation.ui.components.reusable.CustomTextField
 import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
+import org.w3c.dom.Text
 
 @Composable
 fun LoginScreen(modifier: Modifier) {
-    val inpUsername = rememberTextFieldState(initialText = "Memungkinkan Anda, ttttt F")
-    val inpPass = rememberTextFieldState(initialText = "Mengunakan ganja")
+    val inpUsername = rememberTextFieldState()
+    val inpPass = rememberTextFieldState()
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -89,7 +98,25 @@ fun LoginScreen(modifier: Modifier) {
         )
         Spacer(Modifier.height(30.dp))
         Text(
-            text = "Don't have an account? Register",
+            text = buildAnnotatedString {
+                append("Don't have an account? ")
+                val link = LinkAnnotation.Clickable(
+                    tag = "onClick",
+                    styles = TextLinkStyles(
+                        style = SpanStyle(
+                            color = MaterialTheme.colorScheme.secondary,
+                            textDecoration = TextDecoration.None
+                        )
+                    ),
+                    // Do something.
+                    linkInteractionListener = {
+                        println("diClick")
+                    }
+                )
+                withLink(link = link) {
+                    append(text = "Register")
+                }
+            },
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.align(alignment = Alignment.Start)
         )
