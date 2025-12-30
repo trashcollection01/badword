@@ -29,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.presentation.ui.components.reusable.ButtonLarge
 import net.letmethingk.pancode.presentation.ui.components.reusable.CustomTextField
+import net.letmethingk.pancode.presentation.ui.components.reusable.IconButton24
 import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
@@ -58,7 +59,8 @@ fun RegisterScreen(modifier: Modifier) {
                 text = "Sign Up",
                 style = MaterialTheme.typography.headlineLarge
             )
-            Icon(
+            IconButton24(
+                onClick = {  },
                 imageVector = defic24,
                 contentDescription = ""
             )
