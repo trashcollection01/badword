@@ -16,8 +16,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,6 +35,7 @@ import net.letmethingk.pancode.presentation.ui.components.reusable.Overlay
 import net.letmethingk.pancode.presentation.ui.components.reusable.Submenu
 import net.letmethingk.pancode.presentation.ui.components.reusable.TransparentOverlay
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
+import kotlin.math.absoluteValue
 
 /*
  * Workspace screen
@@ -39,7 +44,7 @@ import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 @Composable
 fun WorkspaceScreen(modifier: Modifier = Modifier) {
 //    This state determines what is active and displays the option menus
-    val showOpt = remember { mutableStateListOf(true, false, false, false) }
+    var isShowOpt by remember { mutableStateOf<Int?>(null) }
 //    Workspace screen composable
     Column(
         modifier = modifier
@@ -58,16 +63,19 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Row {
+//                Drawer menu icon button
                 IconButton24(
                     onClick = {
-                        showOpt[3] = !showOpt[3]
+//                        showOpt[3] = !showOpt[3]
+                        isShowOpt = 1
                     },
                     imageVector = defic24,
                     contentDescription = "drawer-menu"
                 )
                 Spacer(modifier = Modifier.width(25.dp))
+//                File Path menu title button
                 Row(modifier = Modifier.clickable(onClick = {
-                    showOpt[2] = !showOpt[2]
+//                    showOpt[2] = !showOpt[2]
                 })) {
                     Icon(
                         imageVector = defic24,
@@ -80,9 +88,10 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
                     )
                 }
             }
+//            Main menu icon button
             IconButton24(
                 onClick = {
-                    showOpt[1] = !showOpt[1]
+//                    showOpt[1] = !showOpt[1]
                 },
                 imageVector = defic24,
                 contentDescription = "main-menu"
@@ -96,37 +105,6 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
         ) {
 
         }
-    }
-//    Main menu
-    TransparentOverlay(
-        onClick = { showOpt[1] = false },
-    ) {
-        CustomMainMenu(
-            modifier = Modifier.offset(x = 71.dp, y = 55.dp)
-        )
-    }
-//    Path menu
-    TransparentOverlay(
-        onClick = { showOpt[2] = false },
-    ) {
-        Submenu(modifier = Modifier.offset(x = 65.dp, y = 55.dp)) {
-            DropdownMenuButton(
-                onClick = {},
-                text = "Open..."
-            )
-            DropdownMenuButton(
-                onClick = {},
-                text = "Close folder"
-            )
-        }
-    }
-//    Drawer menu
-    Overlay(
-        onClick = { showOpt[3] = false },
-        isShowAnimate = showOpt[3],
-        alignment = Alignment.TopStart
-    ) {
-        DrawerMenu(isShowAnimate = showOpt[3])
     }
 }
 
