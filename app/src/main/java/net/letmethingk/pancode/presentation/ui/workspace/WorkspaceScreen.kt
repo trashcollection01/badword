@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import net.letmethingk.pancode.presentation.ui.activity.workspace.MenuDisplayed
 import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.workspace.component.CustomMainMenu
 import net.letmethingk.pancode.presentation.ui.workspace.component.DrawerMenu
@@ -33,7 +34,7 @@ import net.letmethingk.pancode.presentation.ui.components.reusable.DropdownMenuB
 import net.letmethingk.pancode.presentation.ui.components.reusable.IconButton24
 import net.letmethingk.pancode.presentation.ui.components.reusable.Overlay
 import net.letmethingk.pancode.presentation.ui.components.reusable.Submenu
-import net.letmethingk.pancode.presentation.ui.components.reusable.TransparentOverlay
+import net.letmethingk.pancode.presentation.ui.components.reusable.CleanOverlay
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 import kotlin.math.absoluteValue
 
@@ -45,6 +46,7 @@ import kotlin.math.absoluteValue
 fun WorkspaceScreen(modifier: Modifier = Modifier) {
 //    This state determines what is active and displays the option menus
     var isShowOpt by remember { mutableStateOf<Int?>(null) }
+    val menuDisplayed = MenuDisplayed()
 //    Workspace screen composable
     Column(
         modifier = modifier
@@ -66,8 +68,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
 //                Drawer menu icon button
                 IconButton24(
                     onClick = {
-//                        showOpt[3] = !showOpt[3]
-                        isShowOpt = 1
+                        isShowOpt = 3
                     },
                     imageVector = defic24,
                     contentDescription = "drawer-menu"
@@ -75,7 +76,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
                 Spacer(modifier = Modifier.width(25.dp))
 //                File Path menu title button
                 Row(modifier = Modifier.clickable(onClick = {
-//                    showOpt[2] = !showOpt[2]
+                    isShowOpt = 2
                 })) {
                     Icon(
                         imageVector = defic24,
@@ -91,7 +92,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
 //            Main menu icon button
             IconButton24(
                 onClick = {
-//                    showOpt[1] = !showOpt[1]
+                    isShowOpt = 1
                 },
                 imageVector = defic24,
                 contentDescription = "main-menu"
@@ -105,9 +106,11 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
         ) {
 
         }
+        menuDisplayed.MainMenuDisplay(isShow = isShowOpt == 1 ) { isShowOpt = null }
+        menuDisplayed.PathMenuDisplay(isShow = isShowOpt == 2) { isShowOpt = null }
+        menuDisplayed.DrawerMenuDisplay(isShow = isShowOpt == 3) { isShowOpt = null }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

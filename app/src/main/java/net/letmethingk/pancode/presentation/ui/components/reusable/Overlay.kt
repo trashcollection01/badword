@@ -42,27 +42,26 @@ fun Overlay(
                 )
                 .background(color = Color(0x70000000)),
             contentAlignment = alignment
-        ) {
-            content()
-        }
+        ) { content() }
     }
 }
 
 @Composable
-fun TransparentOverlay(
+fun CleanOverlay(
     onClick: () -> Unit,
+    isShow: Boolean,
     content: @Composable () -> Unit
 ) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .clickable(
-                onClick = onClick,
-                indication = null,
-                interactionSource = remember { MutableInteractionSource() },
-            )
-    ) {
-        content()
+    AnimatedVisibility(visible = isShow) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .clickable(
+                    onClick = onClick,
+                    indication = null,
+                    interactionSource = remember { MutableInteractionSource() },
+                )
+        ) { content() }
     }
 }
 

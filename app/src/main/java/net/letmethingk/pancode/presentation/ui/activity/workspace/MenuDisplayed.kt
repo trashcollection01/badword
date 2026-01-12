@@ -8,7 +8,7 @@ import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.presentation.ui.components.reusable.DropdownMenuButton
 import net.letmethingk.pancode.presentation.ui.components.reusable.Overlay
 import net.letmethingk.pancode.presentation.ui.components.reusable.Submenu
-import net.letmethingk.pancode.presentation.ui.components.reusable.TransparentOverlay
+import net.letmethingk.pancode.presentation.ui.components.reusable.CleanOverlay
 import net.letmethingk.pancode.presentation.ui.workspace.component.CustomMainMenu
 import net.letmethingk.pancode.presentation.ui.workspace.component.DrawerMenu
 
@@ -16,15 +16,29 @@ class MenuDisplayed {
 //    The menu that will be displayed when clicked
 //    Main menu
     @Composable
-    fun MainMenuDisplay() {
-        TransparentOverlay(onClick = { /*showOpt[1] = false*/ }) {
-            CustomMainMenu(modifier = Modifier.offset(x = 71.dp, y = 55.dp))
+    fun MainMenuDisplay(
+        isShow: Boolean,
+        onClick: () -> Unit
+) {
+        CleanOverlay(
+            onClick = onClick,
+            isShow = isShow
+        ) {
+            CustomMainMenu(
+                modifier = Modifier.offset(x = 71.dp, y = 55.dp)
+            )
         }
     }
 //    Path menu
     @Composable
-    fun PathMenuDisplay() {
-        TransparentOverlay(onClick = { /*showOpt[2] = false*/ }) {
+    fun PathMenuDisplay(
+        isShow: Boolean,
+        onClick: () -> Unit
+) {
+        CleanOverlay(
+            onClick = onClick,
+            isShow = isShow
+        ) {
             Submenu(modifier = Modifier.offset(x = 65.dp, y = 55.dp)) {
                 DropdownMenuButton(
                     onClick = {},
@@ -39,11 +53,14 @@ class MenuDisplayed {
     }
 //    Drawer menu
     @Composable
-    fun  DrawerMenuDisplay() {
+    fun DrawerMenuDisplay(
+        isShow: Boolean,
+        onClick: () -> Unit
+) {
         Overlay(
-            onClick = { /*showOpt[3] = false*/ },
-            isShowAnimate = false/*showOpt[3]*/,
+            onClick = onClick,
+            isShowAnimate = isShow,
             alignment = Alignment.TopStart
-        ) { DrawerMenu(isShowAnimate = false/*showOpt[3]*/) }
+        ) { DrawerMenu(isShowAnimate = isShow) }
     }
 }
