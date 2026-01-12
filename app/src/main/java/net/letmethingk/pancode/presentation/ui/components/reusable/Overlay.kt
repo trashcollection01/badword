@@ -1,6 +1,7 @@
 package net.letmethingk.pancode.presentation.ui.components.reusable
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -30,7 +31,7 @@ fun Overlay(
     AnimatedVisibility(
         visible = isShowAnimate,
         enter = fadeIn(initialAlpha = 0F, animationSpec = tween(200)),
-        exit = fadeOut(targetAlpha = 0F, animationSpec = tween(400))
+        exit = fadeOut(targetAlpha = 0F, animationSpec = tween(200))
     ) {
         Box(
             modifier = Modifier
@@ -52,7 +53,11 @@ fun CleanOverlay(
     isShow: Boolean,
     content: @Composable () -> Unit
 ) {
-    AnimatedVisibility(visible = isShow) {
+    AnimatedVisibility(
+        visible = isShow,
+        enter = fadeIn(initialAlpha = 0F, animationSpec = tween(200)),
+        exit = fadeOut(targetAlpha = 0F, animationSpec = tween(0))
+    ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()

@@ -56,11 +56,12 @@ class MenuDisplayed {
     fun DrawerMenuDisplay(
         isShow: Boolean,
         onClick: () -> Unit
-) {
+    ) {
         Overlay(
             onClick = onClick,
             isShowAnimate = isShow,
             alignment = Alignment.TopStart
-        ) { DrawerMenu(isShowAnimate = isShow) }
+        ) { }
+        DrawerMenu(isShowAnimate = isShow)
     }
 }

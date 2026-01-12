@@ -33,8 +33,8 @@ fun DrawerMenu(isShowAnimate: Boolean) {
 //    animation slide for drawer menu
     AnimatedVisibility(
         visible = isShowAnimate,
-        enter = slideInHorizontally(animationSpec = tween(400), initialOffsetX = {-it / 2}),
-        exit = slideOutHorizontally(animationSpec = tween(400),)
+        enter = slideInHorizontally(animationSpec = tween(500), initialOffsetX = { -it }),
+        exit = slideOutHorizontally(animationSpec = tween(400), targetOffsetX = { -it })
     ) {
         Row(
             modifier = Modifier
@@ -81,7 +81,9 @@ fun DrawerMenu(isShowAnimate: Boolean) {
 fun PreviewDrawerMenu() {
     PancodeTheme {
         Column(
-            modifier = Modifier.fillMaxSize().background(Color.Magenta)
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Magenta)
         ) {
             DrawerMenu(isShowAnimate = true)
         }

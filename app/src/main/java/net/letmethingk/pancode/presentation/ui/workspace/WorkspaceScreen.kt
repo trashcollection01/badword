@@ -106,10 +106,10 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
         ) {
 
         }
-        menuDisplayed.MainMenuDisplay(isShow = isShowOpt == 1 ) { isShowOpt = null }
-        menuDisplayed.PathMenuDisplay(isShow = isShowOpt == 2) { isShowOpt = null }
-        menuDisplayed.DrawerMenuDisplay(isShow = isShowOpt == 3) { isShowOpt = null }
     }
+    menuDisplayed.MainMenuDisplay(isShow = isShowOpt == 1 ) { isShowOpt = null }
+    menuDisplayed.PathMenuDisplay(isShow = isShowOpt == 2) { isShowOpt = null }
+    menuDisplayed.DrawerMenuDisplay(isShow = isShowOpt == 3) { isShowOpt = null }
 }
 
 @Preview(showBackground = true)
