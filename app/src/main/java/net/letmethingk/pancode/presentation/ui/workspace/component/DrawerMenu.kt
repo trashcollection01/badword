@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.components.reusable.IconButton24
+import net.letmethingk.pancode.presentation.ui.components.reusable.Overlay
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 /*
@@ -29,10 +30,18 @@ import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
  *
  * */
 @Composable
-fun DrawerMenu(isShowAnimate: Boolean) {
+fun DrawerMenu(
+    isShow: Boolean,
+    onClick: () -> Unit,
+) {
+    Overlay(
+        onClick = onClick,
+        isShowAnimate = isShow,
+        alignment = Alignment.TopStart
+    ) { }
 //    animation slide for drawer menu
     AnimatedVisibility(
-        visible = isShowAnimate,
+        visible = isShow,
         enter = slideInHorizontally(animationSpec = tween(500), initialOffsetX = { -it }),
         exit = slideOutHorizontally(animationSpec = tween(400), targetOffsetX = { -it })
     ) {
@@ -85,7 +94,10 @@ fun PreviewDrawerMenu() {
                 .fillMaxSize()
                 .background(Color.Magenta)
         ) {
-            DrawerMenu(isShowAnimate = true)
+            DrawerMenu(
+                isShow = true,
+                onClick = {}
+            )
         }
     }
 }

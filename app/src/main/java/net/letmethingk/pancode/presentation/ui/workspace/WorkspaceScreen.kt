@@ -26,7 +26,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import net.letmethingk.pancode.presentation.ui.activity.workspace.MenuDisplayed
 import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.workspace.component.CustomMainMenu
 import net.letmethingk.pancode.presentation.ui.workspace.component.DrawerMenu
@@ -36,6 +35,7 @@ import net.letmethingk.pancode.presentation.ui.components.reusable.Overlay
 import net.letmethingk.pancode.presentation.ui.components.reusable.Submenu
 import net.letmethingk.pancode.presentation.ui.components.reusable.CleanOverlay
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
+import net.letmethingk.pancode.presentation.ui.workspace.component.PathMenu
 import kotlin.math.absoluteValue
 
 /*
@@ -46,7 +46,6 @@ import kotlin.math.absoluteValue
 fun WorkspaceScreen(modifier: Modifier = Modifier) {
 //    This state determines what is active and displays the option menus
     var isShowOpt by remember { mutableStateOf<Int?>(null) }
-    val menuDisplayed = MenuDisplayed()
 //    Workspace screen composable
     Column(
         modifier = modifier
@@ -107,9 +106,9 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
 
         }
     }
-    menuDisplayed.MainMenuDisplay(isShow = isShowOpt == 1 ) { isShowOpt = null }
-    menuDisplayed.PathMenuDisplay(isShow = isShowOpt == 2) { isShowOpt = null }
-    menuDisplayed.DrawerMenuDisplay(isShow = isShowOpt == 3) { isShowOpt = null }
+//    menuDisplayed.MainMenuDisplay(isShow = isShowOpt == 1 ) { isShowOpt = null }
+    PathMenu(isShow = isShowOpt == 2) { isShowOpt = null }
+    DrawerMenu(isShow = isShowOpt == 3) { isShowOpt = null }
 }
 
 @Preview(showBackground = true)

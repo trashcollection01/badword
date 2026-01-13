@@ -53,11 +53,7 @@ fun CleanOverlay(
     isShow: Boolean,
     content: @Composable () -> Unit
 ) {
-    AnimatedVisibility(
-        visible = isShow,
-        enter = fadeIn(initialAlpha = 0F, animationSpec = tween(200)),
-        exit = fadeOut(targetAlpha = 0F, animationSpec = tween(0))
-    ) {
+    if (isShow) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
