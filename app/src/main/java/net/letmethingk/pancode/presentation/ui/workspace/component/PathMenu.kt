@@ -9,29 +9,20 @@ import net.letmethingk.pancode.presentation.ui.components.reusable.CleanOverlay
 import net.letmethingk.pancode.presentation.ui.components.reusable.DropdownMenuButton
 import net.letmethingk.pancode.presentation.ui.components.reusable.Submenu
 
-enum class PathMenuList(val menuName: String, val onClick: () -> Unit) {
-    OPENOPS(menuName = "Open...", onClick = {
-
-    }),
-    CFOLDER(menuName = "Close folder", onClick = {
-
-    })
-}
-
 @Composable
-fun PathMenu(
-    isShow: Boolean,
-    onClick: () -> Unit
-) {
-    CleanOverlay(
-        onClick = onClick,
-        isShow = isShow
-    ) {
+fun PathMenu(isShow: Boolean, onClick: () -> Unit) {
+    val pathMenuList = listOf("Open...", "Close folder")
+    CleanOverlay(onClick = onClick, isShow = isShow) {
         Submenu(modifier = Modifier.offset(x = 65.dp, y = 55.dp)) {
-            PathMenuList.entries.forEach { menu ->
+            pathMenuList.forEach { menu ->
                 DropdownMenuButton(
-                    onClick = menu.onClick,
-                    text = menu.menuName
+                    onClick = {
+                        when (menu) {
+                            pathMenuList[0] -> {  }
+                            pathMenuList[1] -> {  }
+                        }
+                    },
+                    text = menu
                 )
             }
         }

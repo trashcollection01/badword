@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
@@ -17,8 +16,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -27,16 +24,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
-import net.letmethingk.pancode.presentation.ui.workspace.component.CustomMainMenu
 import net.letmethingk.pancode.presentation.ui.workspace.component.DrawerMenu
-import net.letmethingk.pancode.presentation.ui.components.reusable.DropdownMenuButton
 import net.letmethingk.pancode.presentation.ui.components.reusable.IconButton24
-import net.letmethingk.pancode.presentation.ui.components.reusable.Overlay
-import net.letmethingk.pancode.presentation.ui.components.reusable.Submenu
-import net.letmethingk.pancode.presentation.ui.components.reusable.CleanOverlay
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
+import net.letmethingk.pancode.presentation.ui.workspace.component.MainMenu
 import net.letmethingk.pancode.presentation.ui.workspace.component.PathMenu
-import kotlin.math.absoluteValue
 
 /*
  * Workspace screen
@@ -106,9 +98,9 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
 
         }
     }
-//    menuDisplayed.MainMenuDisplay(isShow = isShowOpt == 1 ) { isShowOpt = null }
+    MainMenu(isShow = isShowOpt == 1) { isShowOpt = null }
     PathMenu(isShow = isShowOpt == 2) { isShowOpt = null }
-    DrawerMenu(isShow = isShowOpt == 3) { isShowOpt = null }
+    DrawerMenu(isShow = isShowOpt == 3) { isShowOpt = null}
 }
 
 @Preview(showBackground = true)

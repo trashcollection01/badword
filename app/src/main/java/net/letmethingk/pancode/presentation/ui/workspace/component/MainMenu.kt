@@ -17,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import net.letmethingk.pancode.presentation.ui.components.reusable.CleanOverlay
 import net.letmethingk.pancode.presentation.ui.components.reusable.DropdownMenuButton
 import net.letmethingk.pancode.presentation.ui.components.reusable.Menu
 import net.letmethingk.pancode.presentation.ui.components.reusable.Submenu
@@ -29,65 +30,50 @@ import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
  * like display main menu and submenu.
  * */
 @Composable
-fun CustomMainMenu(modifier: Modifier = Modifier) {
+fun MainMenu(isShow: Boolean, onClick: () -> Unit) {
 //    This int state determines what is active and display the menu
     var showSubmenu by remember { mutableStateOf<Int?>(null) }
-    Row (
-        modifier = modifier
-            .width(325.dp)
-            .wrapContentHeight(),
-        horizontalArrangement = Arrangement.End
-    ) {
-//        This is to validate based on int number and display the menu
-        when (showSubmenu) {
-            1 -> FileSubmenu()
-            2 -> EditSubmenu()
-            3 -> SelectionSubmenu()
-            4 -> ViewSubmenu()
-            5 -> RunSubmenu()
-            6 -> TerminalSubmenu()
-            7 -> SettingsSubmenu()
-            8 -> HelpSubmenu()
-        }
-        Spacer(modifier = Modifier.width(5.dp))
-//        this is func to wrap up the DropdownMenuButton() to be 1 menu
-        Menu() {
-            DropdownMenuButton(
-                onClick = { showSubmenu = 1 },
-                text = "File"
-            )
-            DropdownMenuButton(
-                onClick = { showSubmenu = 2 },
-                text = "Edit"
-            )
-            DropdownMenuButton(
-                onClick = { showSubmenu = 3 },
-                text = "Selection"
-            )
-            DropdownMenuButton(
-                onClick = { showSubmenu = 4 },
-                text = "View"
-            )
-            DropdownMenuButton(
-                onClick = { showSubmenu = 5 },
-                text = "Run"
-            )
-            DropdownMenuButton(
-                onClick = { showSubmenu = 6 },
-                text = "Terminal"
-            )
-            HorizontalDivider(
-                modifier = Modifier.padding(vertical = 5.dp, horizontal = 10.dp),
-                color = MaterialTheme.colorScheme.outline
-            )
-            DropdownMenuButton(
-                onClick = { showSubmenu = 7 },
-                text = "Settings"
-            )
-            DropdownMenuButton(
-                onClick = { showSubmenu = 8 },
-                text = "Help"
-            )
+    val mainMenuList = listOf("File", "Edit", "Selection", "View", "Run", "Terminal", "Settings", "Help")
+    if (isShow) { showSubmenu = null }
+    CleanOverlay(onClick = onClick, isShow = isShow) {
+        Row (
+            modifier = Modifier
+                .width(325.dp)
+                .wrapContentHeight()
+                .offset(x = 50.dp, y = 55.dp),
+            horizontalArrangement = Arrangement.End
+        ) {
+//            This is to validate based on int number and display the menu
+            when (showSubmenu) {
+                1 -> FileSubmenu()
+                2 -> EditSubmenu()
+                3 -> SelectionSubmenu()
+                4 -> ViewSubmenu()
+                5 -> RunSubmenu()
+                6 -> TerminalSubmenu()
+                7 -> SettingsSubmenu()
+                8 -> HelpSubmenu()
+            }
+            Spacer(modifier = Modifier.width(5.dp))
+//            this is func to wrap up the DropdownMenuButton() to be 1 menu
+            Menu() { mainMenuList.forEach { menu ->
+                    DropdownMenuButton(
+                        text = menu,
+                        onClick = {
+                            when (menu) {
+                                mainMenuList[0] -> { showSubmenu = 1 }
+                                mainMenuList[1] -> { showSubmenu = 2 }
+                                mainMenuList[2] -> { showSubmenu = 3 }
+                                mainMenuList[3] -> { showSubmenu = 4 }
+                                mainMenuList[4] -> { showSubmenu = 5 }
+                                mainMenuList[5] -> { showSubmenu = 6 }
+                                mainMenuList[6] -> { showSubmenu = 7 }
+                                mainMenuList[7] -> { showSubmenu = 8 }
+                            }
+                        }
+                    )
+                }
+            }
         }
     }
 }
@@ -163,13 +149,5 @@ fun HelpSubmenu() {
             onClick = {},
             text = "8"
         )
-    }
-}
-
-@Preview()
-@Composable
-fun MainMenuPreview() {
-    PancodeTheme {
-        CustomMainMenu()
     }
 }
