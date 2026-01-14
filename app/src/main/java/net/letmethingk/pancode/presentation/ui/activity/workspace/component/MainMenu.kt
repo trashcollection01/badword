@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.workspace.component
+package net.letmethingk.pancode.presentation.ui.activity.workspace.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

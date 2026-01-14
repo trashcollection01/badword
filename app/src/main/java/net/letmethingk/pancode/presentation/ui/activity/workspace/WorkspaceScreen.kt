@@ -23,11 +23,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import net.letmethingk.pancode.presentation.ui.activity.workspace.component.DrawerMenu
+import net.letmethingk.pancode.presentation.ui.activity.workspace.component.MainMenu
 import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
-import net.letmethingk.pancode.presentation.ui.workspace.component.DrawerMenu
 import net.letmethingk.pancode.presentation.ui.components.reusable.IconButton24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
-import net.letmethingk.pancode.presentation.ui.workspace.component.MainMenu
 import net.letmethingk.pancode.presentation.ui.workspace.component.PathMenu
 
 /*
