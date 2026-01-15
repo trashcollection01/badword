@@ -2,6 +2,7 @@ package net.letmethingk.pancode.presentation.ui.workspace
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -29,6 +31,7 @@ import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.components.reusable.IconButton24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 import net.letmethingk.pancode.presentation.ui.workspace.component.PathMenu
+import net.letmethingk.pancode.ui.components.reusable.TaskbarFile
 
 /*
  * Workspace screen
@@ -94,7 +97,17 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
                 .fillMaxWidth()
                 .height(35.dp)
                 .background(color = MaterialTheme.colorScheme.surfaceVariant)
+                .horizontalScroll(
+                    state = rememberScrollState(),
+                    overscrollEffect = null
+                )
         ) {
+            TaskbarFile("index.html",{})
+            TaskbarFile("index.php",{})
+            TaskbarFile("index.css",{})
+            TaskbarFile("index.html",{})
+            TaskbarFile("index.php",{})
+            TaskbarFile("index.css",{})
 
         }
     }
