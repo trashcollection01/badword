@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.workspace
+package net.letmethingk.pancode.presentation.ui.activity.workspace
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -18,6 +18,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -27,11 +28,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.DrawerMenu
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.MainMenu
+import net.letmethingk.pancode.presentation.ui.activity.workspace.component.taskbar.TaskbarClass
 import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.components.reusable.IconButton24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 import net.letmethingk.pancode.presentation.ui.workspace.component.PathMenu
-import net.letmethingk.pancode.ui.components.reusable.TaskbarFile
+import net.letmethingk.pancode.presentation.ui.activity.workspace.component.taskbar.TaskbarFile
 
 /*
  * Workspace screen
@@ -39,6 +41,7 @@ import net.letmethingk.pancode.ui.components.reusable.TaskbarFile
  * */
 @Composable
 fun WorkspaceScreen(modifier: Modifier = Modifier) {
+    val taskList = remember { mutableStateListOf(TaskbarClass()) }
 //    This state determines what is active and displays the option menus
     var isShowOpt by remember { mutableStateOf<Int?>(null) }
 //    Workspace screen composable
@@ -71,6 +74,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
 //                File Path menu title button
                 Row(modifier = Modifier.clickable(onClick = {
                     isShowOpt = 2
+                    taskList.clear()
                 })) {
                     Icon(
                         imageVector = defic24,
@@ -87,6 +91,11 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
             IconButton24(
                 onClick = {
                     isShowOpt = 1
+                    val newtask = TaskbarClass(number = 1, name = "index.php")
+                    taskList.add(
+                        index = 1,
+                        element = newtask
+                    )
                 },
                 imageVector = defic24,
                 contentDescription = "main-menu"
@@ -102,13 +111,12 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
                     overscrollEffect = null
                 )
         ) {
-            TaskbarFile("index.html",{})
-            TaskbarFile("index.php",{})
-            TaskbarFile("index.css",{})
-            TaskbarFile("index.html",{})
-            TaskbarFile("index.php",{})
-            TaskbarFile("index.css",{})
-
+            taskList.forEach { (number, name) ->
+                TaskbarFile(
+                    fileName = name,
+                    onClose = { taskList.removeAt(index = number) }
+                ) {  }
+            }
         }
     }
     MainMenu(isShow = isShowOpt == 1) { isShowOpt = null }

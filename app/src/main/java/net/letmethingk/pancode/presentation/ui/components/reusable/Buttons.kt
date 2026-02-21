@@ -76,10 +76,10 @@ fun ButtonMedium(
 //    Icon Button
 @Composable
 fun IconButton24(
-    onClick: () -> Unit,
     imageVector: ImageVector,
     size: Dp = 24.dp,
-    contentDescription: String
+    contentDescription: String,
+    onClick: () -> Unit
 ) {
     IconButton(
         onClick = onClick,

@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import net.letmethingk.pancode.presentation.ui.workspace.WorkspaceScreen
+import net.letmethingk.pancode.presentation.ui.activity.workspace.WorkspaceScreen
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 class MainActivity : ComponentActivity() {
