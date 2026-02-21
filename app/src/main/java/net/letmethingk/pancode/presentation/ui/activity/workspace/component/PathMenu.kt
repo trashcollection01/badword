@@ -13,7 +13,7 @@ import net.letmethingk.pancode.presentation.ui.components.reusable.Submenu
 fun PathMenu(isShow: Boolean, onClick: () -> Unit) {
     val pathMenuList = listOf("Open...", "Close folder")
     CleanOverlay(onClick = onClick, isShow = isShow) {
-        Submenu(modifier = Modifier.offset(x = 65.dp, y = 55.dp)) {
+        Submenu(modifier = Modifier.offset(x = 65.dp, y = 75.dp)) {
             pathMenuList.forEach { menu ->
                 DropdownMenuButton(
                     onClick = {

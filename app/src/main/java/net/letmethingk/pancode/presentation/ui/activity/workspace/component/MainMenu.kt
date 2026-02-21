@@ -40,7 +40,7 @@ fun MainMenu(isShow: Boolean, onClick: () -> Unit) {
             modifier = Modifier
                 .width(325.dp)
                 .wrapContentHeight()
-                .offset(x = 50.dp, y = 55.dp),
+                .offset(x = 75.dp, y = 75.dp),
             horizontalArrangement = Arrangement.End
         ) {
 //            This is to validate based on int number and display the menu
@@ -135,7 +135,7 @@ fun TerminalSubmenu() {
 }
 @Composable
 fun SettingsSubmenu() {
-    Submenu(modifier = Modifier.offset(x = 0.dp, y = 221.dp)) {
+    Submenu(modifier = Modifier.offset(x = 0.dp, y = 210.dp)) {
         DropdownMenuButton(
             onClick = {},
             text = "7"
@@ -144,7 +144,7 @@ fun SettingsSubmenu() {
 }
 @Composable
 fun HelpSubmenu() {
-    Submenu(modifier = Modifier.offset(x = 0.dp, y = 256.dp)) {
+    Submenu(modifier = Modifier.offset(x = 0.dp, y = 245.dp)) {
         DropdownMenuButton(
             onClick = {},
             text = "8"
