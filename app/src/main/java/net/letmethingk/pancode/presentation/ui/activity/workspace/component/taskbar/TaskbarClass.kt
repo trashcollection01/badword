@@ -6,6 +6,6 @@ data class TaskbarClass(
     val number: Int,
     val name: String
 ) {
-    constructor() : this(number = 0, name = "pancode") {}
+    constructor() : this(number = 0, name = "pancode")
 
 }

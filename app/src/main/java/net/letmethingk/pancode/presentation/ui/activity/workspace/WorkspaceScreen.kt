@@ -41,6 +41,7 @@ import net.letmethingk.pancode.presentation.ui.activity.workspace.component.task
  * */
 @Composable
 fun WorkspaceScreen(modifier: Modifier = Modifier) {
+//    Store all tasks in this variable
     val taskList = remember { mutableStateListOf(TaskbarClass()) }
 //    This state determines what is active and displays the option menus
     var isShowOpt by remember { mutableStateOf<Int?>(null) }
@@ -64,18 +65,13 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
             Row {
 //                Drawer menu icon button
                 IconButton24(
-                    onClick = {
-                        isShowOpt = 3
-                    },
+                    onClick = { isShowOpt = 3 },
                     imageVector = defic24,
                     contentDescription = "drawer-menu"
                 )
                 Spacer(modifier = Modifier.width(25.dp))
 //                File Path menu title button
-                Row(modifier = Modifier.clickable(onClick = {
-                    isShowOpt = 2
-                    taskList.clear()
-                })) {
+                Row(modifier = Modifier.clickable(onClick = { isShowOpt = 2 })) {
                     Icon(
                         imageVector = defic24,
                         contentDescription = null
@@ -89,14 +85,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
             }
 //            Main menu icon button
             IconButton24(
-                onClick = {
-                    isShowOpt = 1
-                    val newtask = TaskbarClass(number = 1, name = "index.php")
-                    taskList.add(
-                        index = 1,
-                        element = newtask
-                    )
-                },
+                onClick = { isShowOpt = 1 },
                 imageVector = defic24,
                 contentDescription = "main-menu"
             )
@@ -114,7 +103,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
             taskList.forEach { (number, name) ->
                 TaskbarFile(
                     fileName = name,
-                    onClose = { taskList.removeAt(index = number) }
+                    onClose = { taskList.removeAt(number) }
                 ) {  }
             }
         }
