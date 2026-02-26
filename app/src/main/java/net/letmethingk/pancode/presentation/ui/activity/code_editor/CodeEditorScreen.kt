@@ -44,6 +44,7 @@ fun CodeEditorScreen() {
             .imePadding()
             .background(color = MaterialTheme.colorScheme.surfaceDim)
     ) {
+        BreadcrumbPath()
         BasicTextField(
             state = inpCodeText,
             lineLimits = TextFieldLineLimits.MultiLine(),
