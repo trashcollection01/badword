@@ -1,4 +1,5 @@
 [versions]
+activityComposeVersion = "1.12.4"
 agp = "8.13.0"
 billingKtx = "8.0.0"
 coilNetworkOkhttp = "3.3.0"
@@ -10,10 +11,13 @@ espressoCore = "3.7.0"
 lifecycleRuntimeKtx = "2.9.4"
 activityCompose = "1.11.0"
 composeBom = "2025.10.01"
+lifecycleViewmodelCompose = "2.10.0"
 navigationCompose = "2.9.5"
 
 [libraries]
+androidx-activity-compose-v1124 = { module = "androidx.activity:activity-compose", version.ref = "activityComposeVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 billing-ktx = { module = "com.android.billingclient:billing-ktx", version.ref = "billingKtx" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilNetworkOkhttp" }
