@@ -35,14 +35,17 @@ fun CodeEditorScreen() {
             .imePadding()
             .background(color = MaterialTheme.colorScheme.surfaceDim)
     ) {
-        BreadcrumbPath()
+        viewModel.pathFileName.addAll(
+            listOf("Project", "MyProject", "Pancode", "pancode.me")
+        )
+        BreadcrumbPath(viewModel)
         BasicTextField(
-            state = viewModel.codeTextState,
-            lineLimits = TextFieldLineLimits.MultiLine(),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(vertical = 5.dp, horizontal = 5.dp)
-                .horizontalScroll(state = rememberScrollState(), overscrollEffect = null),
+                state = viewModel.codeTextState,
+                lineLimits = TextFieldLineLimits.MultiLine(),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(vertical = 5.dp, horizontal = 5.dp)
+                    .horizontalScroll(state = rememberScrollState(), overscrollEffect = null),
             textStyle = MaterialTheme.typography.bodyLarge.copy(
                 fontFamily = FontFamily(Font(R.font.jetbrainsmono)),
                 color = if (isSystemInDarkTheme()) Color.White else Color.Black

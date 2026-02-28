@@ -11,4 +11,5 @@ import net.letmethingk.pancode.presentation.ui.activity.code_editor.component.co
 
 class CodeEditorViewModel : ViewModel() {
     val codeTextState = TextFieldState()
+    val pathFileName = mutableListOf<String>()
 }

@@ -22,12 +22,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import net.letmethingk.pancode.presentation.ui.activity.code_editor.CodeEditorViewModel
 import net.letmethingk.pancode.presentation.ui.theme.Typography
 
-@Preview(showBackground = true)
 @Composable
-fun BreadcrumbPath() {
-    val filesName = remember { mutableStateListOf("Project", "MyProject", "Pancode", "note") }
+fun BreadcrumbPath(viewModel: CodeEditorViewModel) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -40,8 +39,8 @@ fun BreadcrumbPath() {
         Row(modifier = Modifier.clickable(
             onClick = {}
         )) {
-            filesName.forEach { value ->
-                if (value != filesName.first()) {
+            viewModel.pathFileName.forEach { value ->
+                if (value != viewModel.pathFileName.first()) {
                     Text(
                         text = " / ",
                         style = MaterialTheme.typography.bodySmall
