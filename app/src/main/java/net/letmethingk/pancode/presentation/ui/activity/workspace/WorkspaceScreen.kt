@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import net.letmethingk.pancode.presentation.ui.activity.code_editor.CodeEditorScreen
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.DrawerMenu
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.MainMenu
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.taskbar.TaskbarClass
@@ -107,6 +108,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
                 ) {  }
             }
         }
+        CodeEditorScreen()
     }
     MainMenu(isShow = isShowOpt == 1) { isShowOpt = null }
     PathMenu(isShow = isShowOpt == 2) { isShowOpt = null }

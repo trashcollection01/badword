@@ -73,5 +73,7 @@ dependencies {
     implementation(libs.coil.network.okhttp)
 
     implementation(libs.billing.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
 
 }
