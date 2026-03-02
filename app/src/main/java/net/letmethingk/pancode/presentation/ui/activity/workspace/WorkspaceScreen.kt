@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import net.letmethingk.pancode.presentation.ui.activity.code_editor.CodeEditorScreen
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.DrawerMenu
@@ -47,8 +48,7 @@ fun WorkspaceScreen(
     modifier: Modifier = Modifier,
     viewModel: WorkspaceViewModel = viewModel()
 ) {
-//    This state determines what is active and displays the option menus
-    var isShowOpt by remember { mutableStateOf<Int?>(null) }
+    val selectedMenu by viewModel.selectedMenu.collectAsStateWithLifecycle()
 //    Workspace screen composable
     Column(
         modifier = modifier
@@ -69,13 +69,15 @@ fun WorkspaceScreen(
             Row {
 //                Drawer menu icon button
                 IconButton24(
-                    onClick = { isShowOpt = 3 },
+                    onClick = {
+                        viewModel.switchMenu(Menu.DrawerMenu) },
                     imageVector = defic24,
                     contentDescription = "drawer-menu"
                 )
                 Spacer(modifier = Modifier.width(25.dp))
 //                File Path menu title button
-                Row(modifier = Modifier.clickable(onClick = { isShowOpt = 2 })) {
+                Row(modifier = Modifier.clickable(
+                    onClick = { viewModel.switchMenu(Menu.PathMenu) })) {
                     Icon(
                         imageVector = defic24,
                         contentDescription = null
@@ -89,7 +91,9 @@ fun WorkspaceScreen(
             }
 //            Main menu icon button
             IconButton24(
-                onClick = { isShowOpt = 1 },
+                onClick = {viewModel.switchMenu(Menu.MainMenu); viewModel.listTaskBar.add(
+                    TaskbarClass(0, "lamboIndex.php")
+                )},
                 imageVector = defic24,
                 contentDescription = "main-menu"
             )
@@ -113,9 +117,15 @@ fun WorkspaceScreen(
         }
         CodeEditorScreen()
     }
-    MainMenu(isShow = isShowOpt == 1) { isShowOpt = null }
-    PathMenu(isShow = isShowOpt == 2) { isShowOpt = null }
-    DrawerMenu(isShow = isShowOpt == 3) { isShowOpt = null}
+    MainMenu(isShow = selectedMenu == Menu.MainMenu) {
+        viewModel.switchMenu(null)
+    }
+    PathMenu(isShow = selectedMenu == Menu.PathMenu) {
+        viewModel.switchMenu(null)
+    }
+    DrawerMenu(isShow = selectedMenu == Menu.DrawerMenu) {
+        viewModel.switchMenu(null)
+    }
 }
 
 @Preview(showBackground = true)
