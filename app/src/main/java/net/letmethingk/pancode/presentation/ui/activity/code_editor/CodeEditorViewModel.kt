@@ -10,6 +10,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import net.letmethingk.pancode.presentation.ui.activity.code_editor.component.code
 
 class CodeEditorViewModel : ViewModel() {
-    val codeTextState = TextFieldState()
-    val pathFileName = mutableListOf<String>()
+    val codeTextState = TextFieldState(initialText = code)
+    val listFilePath = mutableListOf<String>()
 }

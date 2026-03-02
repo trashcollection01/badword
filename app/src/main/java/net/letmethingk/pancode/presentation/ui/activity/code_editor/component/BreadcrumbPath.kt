@@ -22,11 +22,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import net.letmethingk.pancode.presentation.ui.activity.code_editor.CodeEditorViewModel
 import net.letmethingk.pancode.presentation.ui.theme.Typography
 
 @Composable
-fun BreadcrumbPath(viewModel: CodeEditorViewModel) {
+fun BreadcrumbPath(viewModel: CodeEditorViewModel = viewModel()) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -39,8 +41,8 @@ fun BreadcrumbPath(viewModel: CodeEditorViewModel) {
         Row(modifier = Modifier.clickable(
             onClick = {}
         )) {
-            viewModel.pathFileName.forEach { value ->
-                if (value != viewModel.pathFileName.first()) {
+            viewModel.listFilePath.forEach { value ->
+                if (value != viewModel.listFilePath.first()) {
                     Text(
                         text = " / ",
                         style = MaterialTheme.typography.bodySmall

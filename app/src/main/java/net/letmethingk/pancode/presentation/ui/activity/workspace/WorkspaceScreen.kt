@@ -26,6 +26,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import net.letmethingk.pancode.presentation.ui.activity.code_editor.CodeEditorScreen
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.DrawerMenu
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.MainMenu
@@ -41,9 +43,10 @@ import net.letmethingk.pancode.presentation.ui.activity.workspace.component.task
  * the main screen that will be displayed at the beginning
  * */
 @Composable
-fun WorkspaceScreen(modifier: Modifier = Modifier) {
-//    Store all tasks in this variable
-    val taskList = remember { mutableStateListOf(TaskbarClass()) }
+fun WorkspaceScreen(
+    modifier: Modifier = Modifier,
+    viewModel: WorkspaceViewModel = viewModel()
+) {
 //    This state determines what is active and displays the option menus
     var isShowOpt by remember { mutableStateOf<Int?>(null) }
 //    Workspace screen composable
@@ -101,10 +104,10 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
                     overscrollEffect = null
                 )
         ) {
-            taskList.forEach { (number, name) ->
+            viewModel.listTaskBar.forEach { (number, name) ->
                 TaskbarFile(
                     fileName = name,
-                    onClose = { taskList.removeAt(number) }
+                    onClose = { viewModel.listTaskBar.removeAt(number) }
                 ) {  }
             }
         }

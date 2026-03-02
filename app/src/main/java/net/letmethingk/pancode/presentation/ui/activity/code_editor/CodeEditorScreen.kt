@@ -27,15 +27,14 @@ import net.letmethingk.pancode.presentation.ui.activity.code_editor.component.co
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 @Composable
-fun CodeEditorScreen() {
-    val viewModel: CodeEditorViewModel = viewModel()
+fun CodeEditorScreen(viewModel: CodeEditorViewModel = viewModel()) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .imePadding()
             .background(color = MaterialTheme.colorScheme.surfaceDim)
     ) {
-        viewModel.pathFileName.addAll(
+        viewModel.listFilePath.addAll(
             listOf("Project", "MyProject", "Pancode", "pancode.me")
         )
         BreadcrumbPath(viewModel)
