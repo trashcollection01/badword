@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.activity.workspace.component
+package net.letmethingk.pancode.presentation.ui.activity.workspace.component.drawer
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
@@ -30,10 +30,7 @@ import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
  *
  * */
 @Composable
-fun DrawerMenu(
-    isShow: Boolean,
-    onClick: () -> Unit,
-) {
+fun DrawerMenu(isShow: Boolean, onClick: () -> Unit ) {
     Overlay(
         onClick = onClick,
         isShowAnimate = isShow,
@@ -52,35 +49,29 @@ fun DrawerMenu(
                 .clickable(onClick = {}, enabled = false)
                 .background(color = MaterialTheme.colorScheme.surfaceVariant)
         ) {
-//            drawer menu
-            Column(
-                modifier = Modifier
-                    .width(45.dp)
-                    .fillMaxHeight()
-                    .background(color = MaterialTheme.colorScheme.surface)
-                    .padding(vertical = 100.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                IconButton24(
-                    onClick = {},
-                    imageVector = defic24,
-                    contentDescription = "",
-                    size = 45.dp
-                )
-                IconButton24(
-                    onClick = {},
-                    imageVector = defic24,
-                    contentDescription = "",
-                    size = 45.dp
-                )
-                IconButton24(
-                    onClick = {},
-                    imageVector = defic24,
-                    contentDescription = "",
-                    size = 45.dp
-                )
-            }
-//            content from menu
+//            Navigation drawer
+            NavButtonDrawer()
+//            Tool content
+        }
+    }
+}
+
+@Composable
+fun NavButtonDrawer() {
+    Column(
+        modifier = Modifier
+            .width(45.dp)
+            .fillMaxHeight()
+            .padding(vertical = 100.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        IconButtonNavClass.entries.forEach { (icon, description) ->
+            IconButton24(
+                onClick = {},
+                imageVector = icon,
+                contentDescription = description,
+                size = 45.dp
+            )
         }
     }
 }
