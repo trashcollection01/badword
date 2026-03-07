@@ -24,7 +24,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import net.letmethingk.pancode.presentation.ui.activity.code_editor.CodeEditorScreen
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.drawer.DrawerMenu
-import net.letmethingk.pancode.presentation.ui.activity.workspace.component.MainMenu
+import net.letmethingk.pancode.presentation.ui.activity.workspace.component.mainmenu.MainMenu
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.taskbar.TaskbarClass
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.taskbar.TaskbarMenu
 import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
@@ -54,20 +54,21 @@ fun WorkspaceScreen(
         TaskbarMenu(viewModel)
         CodeEditorScreen()
     }
-    MainMenu(isShow = selectedMenu == Menu.MainMenu) {
+    MainMenu(isShow = selectedMenu == MenuList.MainMenu) {
+        viewModel.switchMenu(null)
+        viewModel.switchMainMenu(null)
+    }
+    PathMenu(isShow = selectedMenu == MenuList.PathMenu) {
         viewModel.switchMenu(null)
     }
-    PathMenu(isShow = selectedMenu == Menu.PathMenu) {
-        viewModel.switchMenu(null)
-    }
-    DrawerMenu(isShow = selectedMenu == Menu.DrawerMenu) {
+    DrawerMenu(isShow = selectedMenu == MenuList.DrawerMenu) {
         viewModel.switchMenu(null)
     }
 }
 
 @Composable
 fun Topbar(viewModel: WorkspaceViewModel = viewModel()) {
-    val selectedMenu by viewModel.selectedMenu.collectAsStateWithLifecycle()
+//    val selectedMenu by viewModel.selectedMenu.collectAsStateWithLifecycle()
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -81,14 +82,14 @@ fun Topbar(viewModel: WorkspaceViewModel = viewModel()) {
 //                Drawer menu icon button
             IconButton24(
                 onClick = {
-                    viewModel.switchMenu(Menu.DrawerMenu) },
+                    viewModel.switchMenu(MenuList.DrawerMenu) },
                 imageVector = defic24,
                 contentDescription = "drawer-menu"
             )
             Spacer(modifier = Modifier.width(25.dp))
 //                File Path menu title button
             Row(modifier = Modifier.clickable(
-                onClick = { viewModel.switchMenu(Menu.PathMenu) })) {
+                onClick = { viewModel.switchMenu(MenuList.PathMenu) })) {
                 Icon(
                     imageVector = defic24,
                     contentDescription = null
@@ -102,7 +103,7 @@ fun Topbar(viewModel: WorkspaceViewModel = viewModel()) {
         }
 //            Main menu icon button
         IconButton24(
-            onClick = { viewModel.switchMenu(Menu.MainMenu); viewModel.listTaskBar.add(
+            onClick = { viewModel.switchMenu(MenuList.MainMenu); viewModel.listTaskBar.add(
                 TaskbarClass(0, "lamboIndex.php")
             )},
             imageVector = defic24,

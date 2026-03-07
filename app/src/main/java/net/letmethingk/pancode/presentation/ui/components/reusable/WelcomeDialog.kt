@@ -68,10 +68,3 @@ fun WelcomeDialog(onConfirm: () -> Unit) {
     }
 }
 
-@Preview
-@Composable
-fun WelcomeDialogPreview() {
-    PancodeTheme {
-        WelcomeDialog { }
-    }
-}

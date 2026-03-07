@@ -65,12 +65,3 @@ fun CleanOverlay(
         ) { content() }
     }
 }
-
-@Preview
-@Composable
-fun PreviewOverlay() {
-    var ishh by remember { mutableStateOf(false) }
-    PancodeTheme {
-        Overlay(onClick = { ishh = !ishh }, isShowAnimate = ishh, alignment = Alignment.Center) { }
-    }
-}

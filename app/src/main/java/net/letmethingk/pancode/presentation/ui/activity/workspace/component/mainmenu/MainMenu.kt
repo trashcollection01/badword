@@ -1,27 +1,25 @@
-package net.letmethingk.pancode.presentation.ui.activity.workspace.component
+package net.letmethingk.pancode.presentation.ui.activity.workspace.component.mainmenu
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import net.letmethingk.pancode.presentation.ui.activity.workspace.WorkspaceViewModel
 import net.letmethingk.pancode.presentation.ui.components.reusable.CleanOverlay
 import net.letmethingk.pancode.presentation.ui.components.reusable.DropdownMenuButton
 import net.letmethingk.pancode.presentation.ui.components.reusable.Menu
 import net.letmethingk.pancode.presentation.ui.components.reusable.Submenu
-import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 /*
  * Main Menu
@@ -30,11 +28,13 @@ import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
  * like display main menu and submenu.
  * */
 @Composable
-fun MainMenu(isShow: Boolean, onClick: () -> Unit) {
+fun MainMenu(
+    viewModel: WorkspaceViewModel = viewModel(),
+    isShow: Boolean,
+    onClick: () -> Unit
+) {
 //    This int state determines what is active and display the menu
-    var showSubmenu by remember { mutableStateOf<Int?>(null) }
-    val mainMenuList = listOf("File", "Edit", "Selection", "View", "Run", "Terminal", "Settings", "Help")
-    if (isShow) { showSubmenu = null }
+    val selectedMainMenu = viewModel.selectedMainMenu.collectAsStateWithLifecycle()
     CleanOverlay(onClick = onClick, isShow = isShow) {
         Row (
             modifier = Modifier
@@ -44,32 +44,24 @@ fun MainMenu(isShow: Boolean, onClick: () -> Unit) {
             horizontalArrangement = Arrangement.End
         ) {
 //            This is to validate based on int number and display the menu
-            when (showSubmenu) {
-                1 -> FileSubmenu()
-                2 -> EditSubmenu()
-                3 -> SelectionSubmenu()
-                4 -> ViewSubmenu()
-                5 -> RunSubmenu()
-                6 -> TerminalSubmenu()
-                7 -> SettingsSubmenu()
-                8 -> HelpSubmenu()
+            when (selectedMainMenu.value) {
+                MainMenuList.FILE -> FileSubmenu()
+                MainMenuList.EDIT -> EditSubmenu()
+                MainMenuList.SELECTION -> SelectionSubmenu()
+                MainMenuList.VIEW -> ViewSubmenu()
+                MainMenuList.RUN -> RunSubmenu()
+                MainMenuList.TERMINAL -> TerminalSubmenu()
+                MainMenuList.SETTINGS -> SettingsSubmenu()
+                MainMenuList.HELP -> HelpSubmenu()
+                else -> {  }
             }
             Spacer(modifier = Modifier.width(5.dp))
 //            this is func to wrap up the DropdownMenuButton() to be 1 menu
-            Menu() { mainMenuList.forEach { menu ->
+            Menu() { MainMenuList.entries.forEach { menu ->
                     DropdownMenuButton(
-                        text = menu,
+                        text = menu.nameMenu,
                         onClick = {
-                            when (menu) {
-                                mainMenuList[0] -> { showSubmenu = 1 }
-                                mainMenuList[1] -> { showSubmenu = 2 }
-                                mainMenuList[2] -> { showSubmenu = 3 }
-                                mainMenuList[3] -> { showSubmenu = 4 }
-                                mainMenuList[4] -> { showSubmenu = 5 }
-                                mainMenuList[5] -> { showSubmenu = 6 }
-                                mainMenuList[6] -> { showSubmenu = 7 }
-                                mainMenuList[7] -> { showSubmenu = 8 }
-                            }
+                            viewModel.switchMainMenu(menu)
                         }
                     )
                 }

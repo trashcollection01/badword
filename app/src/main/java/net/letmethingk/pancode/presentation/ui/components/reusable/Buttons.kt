@@ -113,10 +113,3 @@ fun DropdownMenuButton(
     )
 }
 
-@Preview
-@Composable
-fun ButtonsPreview() {
-    PancodeTheme {
-        ButtonLarge({}, "Loremo")
-    }
-}
