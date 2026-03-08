@@ -20,6 +20,11 @@ import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.presentation.ui.compose_vectors.defic12
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
+data class TaskbarClass(
+    val number: Int,
+    val name: String
+) { constructor() : this(number = 0, name = "pancode") }
+
 @Composable
 fun Taskbar(
     fileName: String,

@@ -2,6 +2,7 @@ package net.letmethingk.pancode.presentation.ui.activity.workspace
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,12 +27,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import net.letmethingk.pancode.presentation.ui.activity.code_editor.CodeEditorScreen
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.drawer.DrawerMenu
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.mainmenu.MainMenu
-import net.letmethingk.pancode.presentation.ui.activity.workspace.component.taskbar.TaskbarClass
-import net.letmethingk.pancode.presentation.ui.activity.workspace.component.taskbar.TaskbarMenu
 import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.components.reusable.IconButton24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
-import net.letmethingk.pancode.presentation.ui.workspace.component.PathMenu
+import net.letmethingk.pancode.presentation.ui.activity.workspace.component.PathMenu
+import net.letmethingk.pancode.presentation.ui.components.reusable.Taskbar
+import net.letmethingk.pancode.presentation.ui.components.reusable.TaskbarClass
 
 /*
  * Workspace screen
@@ -63,6 +65,27 @@ fun WorkspaceScreen(
     }
     DrawerMenu(isShow = selectedMenu == MenuList.DrawerMenu) {
         viewModel.switchMenu(null)
+    }
+}
+
+@Composable
+fun TaskbarMenu(viewModel: WorkspaceViewModel = viewModel()) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(35.dp)
+            .background(color = MaterialTheme.colorScheme.surfaceVariant)
+            .horizontalScroll(
+                state = rememberScrollState(),
+                overscrollEffect = null
+            )
+    ) {
+        viewModel.listTaskBar.forEach { (number, name) ->
+            Taskbar(
+                fileName = name,
+                onClose = { viewModel.listTaskBar.removeAt(number) }
+            ) {  }
+        }
     }
 }
 

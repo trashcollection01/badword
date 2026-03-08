@@ -1,9 +1,8 @@
-package net.letmethingk.pancode.presentation.ui.workspace.component
+package net.letmethingk.pancode.presentation.ui.activity.workspace.component
 
 import androidx.compose.foundation.layout.offset
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.presentation.ui.components.reusable.CleanOverlay
 import net.letmethingk.pancode.presentation.ui.components.reusable.DropdownMenuButton
