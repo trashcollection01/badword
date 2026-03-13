@@ -28,11 +28,11 @@ import net.letmethingk.pancode.presentation.ui.activity.code_editor.CodeEditorSc
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.drawer.DrawerMenu
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.mainmenu.MainMenu
 import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
-import net.letmethingk.pancode.presentation.ui.components.reusable.IconButton24
+import net.letmethingk.pancode.presentation.ui.common.components.IconButton24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.PathMenu
-import net.letmethingk.pancode.presentation.ui.components.reusable.Taskbar
-import net.letmethingk.pancode.presentation.ui.components.reusable.TaskbarClass
+import net.letmethingk.pancode.presentation.ui.common.components.Taskbar
+import net.letmethingk.pancode.presentation.ui.common.components.TaskbarClass
 
 /*
  * Workspace screen

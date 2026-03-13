@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.components.reusable
+package net.letmethingk.pancode.presentation.ui.common.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.height
@@ -16,10 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 //    Button Regular
 //    Button Regular size large w340 h50

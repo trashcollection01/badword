@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.components.reusable
+package net.letmethingk.pancode.presentation.ui.common.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

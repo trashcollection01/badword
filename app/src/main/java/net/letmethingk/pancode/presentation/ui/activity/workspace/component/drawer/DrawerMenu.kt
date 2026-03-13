@@ -20,9 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
-import net.letmethingk.pancode.presentation.ui.components.reusable.IconButton24
-import net.letmethingk.pancode.presentation.ui.components.reusable.Overlay
+import net.letmethingk.pancode.presentation.ui.common.components.IconButton24
+import net.letmethingk.pancode.presentation.ui.common.components.Overlay
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 /*
