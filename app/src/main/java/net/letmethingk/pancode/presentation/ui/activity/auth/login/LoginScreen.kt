@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.activity.sign_in
+package net.letmethingk.pancode.presentation.ui.activity.auth.login
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,6 +24,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import net.letmethingk.pancode.presentation.ui.common.components.ButtonLarge
 import net.letmethingk.pancode.presentation.ui.common.components.CustomTextField
 import net.letmethingk.pancode.presentation.ui.common.components.IconButton24
@@ -32,9 +32,10 @@ import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 @Composable
-fun LoginScreen(modifier: Modifier) {
-    val inpUsername = rememberTextFieldState()
-    val inpPass = rememberTextFieldState()
+fun LoginScreen(
+    modifier: Modifier,
+    viewModel: LoginViewModel = viewModel()
+) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -63,12 +64,12 @@ fun LoginScreen(modifier: Modifier) {
         }
         Spacer(Modifier.height(100.dp))
         CustomTextField(
-            input = inpUsername,
+            input = viewModel.inpUsernameTextState,
             label = "Username"
         )
         Spacer(modifier = Modifier.height(25.dp))
         CustomTextField(
-            input = inpPass,
+            input = viewModel.inpPassTextState,
             label = "Password"
         )
         Spacer(Modifier.height(20.dp))

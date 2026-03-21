@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.activity.sign_up
+package net.letmethingk.pancode.presentation.ui.activity.auth.register
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +23,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import net.letmethingk.pancode.presentation.ui.common.components.ButtonLarge
 import net.letmethingk.pancode.presentation.ui.common.components.CustomTextField
 import net.letmethingk.pancode.presentation.ui.common.components.IconButton24
@@ -31,11 +31,10 @@ import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 @Composable
-fun RegisterScreen(modifier: Modifier) {
-    val inpUsername = rememberTextFieldState()
-    val inpEmail = rememberTextFieldState()
-    val inpNewPass = rememberTextFieldState()
-    val inpPassVer = rememberTextFieldState()
+fun RegisterScreen(
+    modifier: Modifier,
+    viewModel: RegisterViewModel = viewModel()
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -64,22 +63,22 @@ fun RegisterScreen(modifier: Modifier) {
         }
         Spacer(Modifier.height(100.dp))
         CustomTextField(
-            input = inpUsername,
+            input = viewModel.inpUsernameTextState,
             label = "Username"
         )
         Spacer(Modifier.height(25.dp))
         CustomTextField(
-            input = inpEmail,
+            input = viewModel.inpEmailTextState,
             label = "Email"
         )
         Spacer(Modifier.height(25.dp))
         CustomTextField(
-            input = inpNewPass,
+            input = viewModel.inpNewPassTextState,
             label = "New password"
         )
         Spacer(Modifier.height(25.dp))
         CustomTextField(
-            input = inpPassVer,
+            input = viewModel.inpPassVerTextState,
             label = "Re-enter password"
         )
         Spacer(Modifier.height(55.dp))
