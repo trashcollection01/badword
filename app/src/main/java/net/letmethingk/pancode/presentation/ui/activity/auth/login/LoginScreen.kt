@@ -32,16 +32,8 @@ import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 @Composable
-fun LoginScreen(
-    modifier: Modifier,
-    viewModel: LoginViewModel = viewModel()
-) {
+fun LoginScreen(viewModel: LoginViewModel = viewModel()) {
     Column(
-        modifier = modifier
-            .fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.surface)
-            .padding(horizontal = 25.dp)
-            .padding(top = 45.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -84,7 +76,7 @@ fun LoginScreen(
         )
         Spacer(Modifier.height(35.dp))
         ButtonLarge(
-            onClick = {},
+            onClick = { viewModel.switchForm(true) },
             text = "Login"
         )
         Spacer(Modifier.height(30.dp))
@@ -101,7 +93,8 @@ fun LoginScreen(
                     ),
                     // Do something.
                     linkInteractionListener = {
-                        println("diClick")
+                        viewModel.switchForm(true)
+//                        println("dipencet")
                     }
                 )
                 withLink(link = link) {
@@ -118,6 +111,6 @@ fun LoginScreen(
 @Composable
 fun LoginScreenPreview() {
     PancodeTheme {
-        LoginScreen(modifier = Modifier)
+        LoginScreen()
     }
 }

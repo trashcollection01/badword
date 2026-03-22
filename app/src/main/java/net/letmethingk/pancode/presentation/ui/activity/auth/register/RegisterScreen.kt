@@ -31,16 +31,8 @@ import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 @Composable
-fun RegisterScreen(
-    modifier: Modifier,
-    viewModel: RegisterViewModel = viewModel()
-) {
+fun RegisterScreen(viewModel: RegisterViewModel = viewModel()) {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.surface)
-            .padding(horizontal = 25.dp)
-            .padding(top = 45.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -100,7 +92,7 @@ fun RegisterScreen(
                     ),
                     // Do something
                     linkInteractionListener = {
-                        println("diClick")
+                        viewModel.switchForm(false)
                     }
                 )
                 withLink(link = link) {
@@ -117,6 +109,6 @@ fun RegisterScreen(
 @Composable
 fun RegisterScreenPreview() {
     PancodeTheme {
-        RegisterScreen(modifier = Modifier)
+        RegisterScreen()
     }
 }
