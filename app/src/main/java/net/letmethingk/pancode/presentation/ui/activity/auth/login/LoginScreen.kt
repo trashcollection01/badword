@@ -25,6 +25,7 @@ import androidx.compose.ui.text.withLink
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import net.letmethingk.pancode.presentation.ui.activity.auth.AuthViewModel
 import net.letmethingk.pancode.presentation.ui.common.components.ButtonLarge
 import net.letmethingk.pancode.presentation.ui.common.components.CustomTextField
 import net.letmethingk.pancode.presentation.ui.common.components.IconButton24
@@ -32,7 +33,10 @@ import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 @Composable
-fun LoginScreen(viewModel: LoginViewModel = viewModel()) {
+fun LoginScreen(
+    viewModel: LoginViewModel = viewModel(),
+    authViewModel: AuthViewModel = viewModel()
+) {
     Column(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -76,7 +80,7 @@ fun LoginScreen(viewModel: LoginViewModel = viewModel()) {
         )
         Spacer(Modifier.height(35.dp))
         ButtonLarge(
-            onClick = { viewModel.switchForm(true) },
+            onClick = {  },
             text = "Login"
         )
         Spacer(Modifier.height(30.dp))
@@ -93,7 +97,7 @@ fun LoginScreen(viewModel: LoginViewModel = viewModel()) {
                     ),
                     // Do something.
                     linkInteractionListener = {
-                        viewModel.switchForm(true)
+                        authViewModel.switchForm(true)
 //                        println("dipencet")
                     }
                 )

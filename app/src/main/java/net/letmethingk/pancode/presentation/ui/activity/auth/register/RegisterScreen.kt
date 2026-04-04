@@ -24,6 +24,7 @@ import androidx.compose.ui.text.withLink
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import net.letmethingk.pancode.presentation.ui.activity.auth.AuthViewModel
 import net.letmethingk.pancode.presentation.ui.common.components.ButtonLarge
 import net.letmethingk.pancode.presentation.ui.common.components.CustomTextField
 import net.letmethingk.pancode.presentation.ui.common.components.IconButton24
@@ -31,7 +32,10 @@ import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 @Composable
-fun RegisterScreen(viewModel: RegisterViewModel = viewModel()) {
+fun RegisterScreen(
+    viewModel: RegisterViewModel = viewModel(),
+    authViewModel: AuthViewModel = viewModel()
+) {
     Column(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -92,7 +96,7 @@ fun RegisterScreen(viewModel: RegisterViewModel = viewModel()) {
                     ),
                     // Do something
                     linkInteractionListener = {
-                        viewModel.switchForm(false)
+                        authViewModel.switchForm(false)
                     }
                 )
                 withLink(link = link) {
