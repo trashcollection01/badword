@@ -58,17 +58,17 @@ fun LoginScreen(
                 contentDescription = ""
             )
         }
-        Spacer(Modifier.height(100.dp))
+        Spacer(Modifier.height(90.dp))
         CustomTextField(
             input = viewModel.inpUsernameTextState,
             label = "Username"
         )
-        Spacer(modifier = Modifier.height(25.dp))
+        Spacer(modifier = Modifier.height(20.dp))
         CustomTextField(
             input = viewModel.inpPassTextState,
             label = "Password"
         )
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(15.dp))
         Text(
             text = "Forgot password",
             style = MaterialTheme.typography.bodyMedium,
@@ -83,7 +83,7 @@ fun LoginScreen(
             onClick = {  },
             text = "Login"
         )
-        Spacer(Modifier.height(30.dp))
+        Spacer(Modifier.height(20.dp))
         Text(
             text = buildAnnotatedString {
                 append("Don't have an account? ")

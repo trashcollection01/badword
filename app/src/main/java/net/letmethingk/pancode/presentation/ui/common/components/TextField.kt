@@ -25,7 +25,7 @@ fun CustomTextField(input: TextFieldState, label: String) {
             .fillMaxWidth()
             .wrapContentHeight(),
         enabled = true,
-        textStyle = MaterialTheme.typography.bodyMedium.copy(
+        textStyle = MaterialTheme.typography.bodyLarge.copy(
             color = if (isSystemInDarkTheme()) Color.White else Color.Black
         ),
         lineLimits = TextFieldLineLimits.SingleLine,
@@ -35,9 +35,9 @@ fun CustomTextField(input: TextFieldState, label: String) {
                     text = label,
                     style = MaterialTheme.typography.labelSmall
                 )
-                Spacer(modifier = Modifier.height(7.dp))
+                Spacer(modifier = Modifier.height(8.dp))
                 innerTextField()
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(5.dp))
                 HorizontalDivider(
                     thickness = 3.dp,
                     color = MaterialTheme.colorScheme.outline

@@ -57,32 +57,32 @@ fun RegisterScreen(
                 contentDescription = ""
             )
         }
-        Spacer(Modifier.height(100.dp))
+        Spacer(Modifier.height(90.dp))
         CustomTextField(
             input = viewModel.inpUsernameTextState,
             label = "Username"
         )
-        Spacer(Modifier.height(25.dp))
+        Spacer(Modifier.height(20.dp))
         CustomTextField(
             input = viewModel.inpEmailTextState,
             label = "Email"
         )
-        Spacer(Modifier.height(25.dp))
+        Spacer(Modifier.height(20.dp))
         CustomTextField(
             input = viewModel.inpNewPassTextState,
             label = "New password"
         )
-        Spacer(Modifier.height(25.dp))
+        Spacer(Modifier.height(20.dp))
         CustomTextField(
             input = viewModel.inpPassVerTextState,
             label = "Re-enter password"
         )
-        Spacer(Modifier.height(55.dp))
+        Spacer(Modifier.height(50.dp))
         ButtonLarge(
             onClick = {},
             text = "Register"
         )
-        Spacer(Modifier.height(30.dp))
+        Spacer(Modifier.height(20.dp))
         Text(
             text = buildAnnotatedString {
                 append("Already have an account? ")
