@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 //    Button Regular size large w340 h50
 @Composable
 fun ButtonLarge(
-    onClick: () -> Unit,
-    text: String
+    text: String,
+    onClick: () -> Unit
 ) {
     Button(
         onClick = onClick,

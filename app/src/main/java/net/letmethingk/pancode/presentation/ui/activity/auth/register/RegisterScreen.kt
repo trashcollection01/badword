@@ -1,7 +1,6 @@
-package net.letmethingk.pancode.presentation.ui.activity.sign_in
+package net.letmethingk.pancode.presentation.ui.activity.auth.register
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,6 +23,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import net.letmethingk.pancode.presentation.ui.activity.auth.AuthViewModel
 import net.letmethingk.pancode.presentation.ui.common.components.ButtonLarge
 import net.letmethingk.pancode.presentation.ui.common.components.CustomTextField
 import net.letmethingk.pancode.presentation.ui.common.components.IconButton24
@@ -32,15 +32,11 @@ import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 @Composable
-fun LoginScreen(modifier: Modifier) {
-    val inpUsername = rememberTextFieldState()
-    val inpPass = rememberTextFieldState()
+fun RegisterScreen(
+    viewModel: RegisterViewModel = viewModel(),
+    authViewModel: AuthViewModel = viewModel()
+) {
     Column(
-        modifier = modifier
-            .fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.surface)
-            .padding(horizontal = 25.dp)
-            .padding(top = 45.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -52,7 +48,7 @@ fun LoginScreen(modifier: Modifier) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Sign in",
+                text = "Sign Up",
                 style = MaterialTheme.typography.headlineLarge
             )
             IconButton24(
@@ -61,35 +57,35 @@ fun LoginScreen(modifier: Modifier) {
                 contentDescription = ""
             )
         }
-        Spacer(Modifier.height(100.dp))
+        Spacer(Modifier.height(90.dp))
         CustomTextField(
-            input = inpUsername,
+            input = viewModel.inpUsernameTextState,
             label = "Username"
         )
-        Spacer(modifier = Modifier.height(25.dp))
+        Spacer(Modifier.height(20.dp))
         CustomTextField(
-            input = inpPass,
-            label = "Password"
+            input = viewModel.inpEmailTextState,
+            label = "Email"
+        )
+        Spacer(Modifier.height(20.dp))
+        CustomTextField(
+            input = viewModel.inpNewPassTextState,
+            label = "New password"
+        )
+        Spacer(Modifier.height(20.dp))
+        CustomTextField(
+            input = viewModel.inpPassVerTextState,
+            label = "Re-enter password"
+        )
+        Spacer(Modifier.height(50.dp))
+        ButtonLarge(
+            onClick = {},
+            text = "Register"
         )
         Spacer(Modifier.height(20.dp))
         Text(
-            text = "Forgot password",
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier
-                .clickable(
-                    onClick = {}
-                )
-                .align(alignment = Alignment.End),
-        )
-        Spacer(Modifier.height(35.dp))
-        ButtonLarge(
-            onClick = {},
-            text = "Login"
-        )
-        Spacer(Modifier.height(30.dp))
-        Text(
             text = buildAnnotatedString {
-                append("Don't have an account? ")
+                append("Already have an account? ")
                 val link = LinkAnnotation.Clickable(
                     tag = "onClick",
                     styles = TextLinkStyles(
@@ -98,25 +94,25 @@ fun LoginScreen(modifier: Modifier) {
                             textDecoration = TextDecoration.None
                         )
                     ),
-                    // Do something.
+                    // Do something
                     linkInteractionListener = {
-                        println("diClick")
+                        authViewModel.switchForm(false)
                     }
                 )
                 withLink(link = link) {
-                    append(text = "Register")
+                    append(text = "Login")
                 }
             },
             style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.align(alignment = Alignment.Start)
+            modifier = Modifier.align(alignment = Alignment.Start),
         )
     }
 }
 
 @Preview
 @Composable
-fun LoginScreenPreview() {
+fun RegisterScreenPreview() {
     PancodeTheme {
-        LoginScreen(modifier = Modifier)
+        RegisterScreen()
     }
 }
