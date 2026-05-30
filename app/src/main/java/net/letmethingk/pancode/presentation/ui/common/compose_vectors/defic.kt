@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.compose_vectors
+package net.letmethingk.pancode.presentation.ui.common.compose_vectors
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor

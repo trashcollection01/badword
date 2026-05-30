@@ -1,8 +1,7 @@
 package net.letmethingk.pancode.presentation.ui.activity.workspace.component.drawer
 
 import androidx.compose.ui.graphics.vector.ImageVector
-import net.letmethingk.pancode.presentation.ui.compose_vectors.defic12
-import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
+import net.letmethingk.pancode.presentation.ui.common.compose_vectors.defic24
 
 enum class IconButtonNavClass(
     val icon: ImageVector,

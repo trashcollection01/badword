@@ -15,7 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
+import net.letmethingk.pancode.presentation.ui.common.compose_vectors.defic24
 
 @Preview
 @Composable
@@ -35,7 +35,8 @@ fun SearchBar(
         prefix = {
             Icon(
                 modifier = Modifier.padding(end = 5.dp),
-                imageVector = defic24,
+                imageVector =
+                    defic24,
                 contentDescription = "search"
             )
         }

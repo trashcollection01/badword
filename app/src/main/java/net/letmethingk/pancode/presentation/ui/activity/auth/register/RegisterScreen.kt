@@ -28,12 +28,12 @@ import net.letmethingk.pancode.presentation.ui.activity.auth.AuthViewModel
 import net.letmethingk.pancode.presentation.ui.common.components.ButtonLarge
 import net.letmethingk.pancode.presentation.ui.common.components.CustomTextField
 import net.letmethingk.pancode.presentation.ui.common.components.IconButton24
-import net.letmethingk.pancode.presentation.ui.compose_vectors.defic24
+import net.letmethingk.pancode.presentation.ui.common.compose_vectors.defic24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 @Composable
 fun RegisterScreen(
-    viewModel: RegisterViewModel = viewModel(),
+    viewModel: RegisterViewModel= viewModel(),
     authViewModel: AuthViewModel = viewModel()
 ) {
     Column(

@@ -16,7 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import net.letmethingk.pancode.presentation.ui.compose_vectors.defic12
+import net.letmethingk.pancode.presentation.ui.common.compose_vectors.defic12
 
 data class TaskbarClass(
     val number: Int,
