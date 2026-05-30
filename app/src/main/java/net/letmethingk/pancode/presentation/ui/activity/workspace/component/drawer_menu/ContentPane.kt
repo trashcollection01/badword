@@ -1,9 +1,9 @@
-package net.letmethingk.pancode.presentation.ui.activity.workspace.component.drawer
+package net.letmethingk.pancode.presentation.ui.activity.workspace.component.drawer_menu
 
 import androidx.compose.ui.graphics.vector.ImageVector
 import net.letmethingk.pancode.presentation.ui.common.compose_vectors.defic24
 
-enum class IconButtonNavClass(
+enum class ContentPane(
     val icon: ImageVector,
     val description: String,
     val onClick: () -> Unit

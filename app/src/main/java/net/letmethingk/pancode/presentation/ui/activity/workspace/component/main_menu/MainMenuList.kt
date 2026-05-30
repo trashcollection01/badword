@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.activity.workspace.component.mainmenu
+package net.letmethingk.pancode.presentation.ui.activity.workspace.component.main_menu
 
 enum class MainMenuList(
     val nameMenu: String

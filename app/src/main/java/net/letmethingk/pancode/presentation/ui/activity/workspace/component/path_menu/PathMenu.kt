@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.activity.workspace.component
+package net.letmethingk.pancode.presentation.ui.activity.workspace.component.path_menu
 
 import androidx.compose.foundation.layout.offset
 import androidx.compose.runtime.Composable

@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.activity.workspace.component.mainmenu
+package net.letmethingk.pancode.presentation.ui.activity.workspace.component.main_menu
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -24,13 +25,12 @@ import net.letmethingk.pancode.presentation.ui.common.components.Submenu
  * like display main menu and submenu.
  * */
 @Composable
-fun MainMenu(
-    viewModel: WorkspaceViewModel = viewModel(),
-    isShow: Boolean,
-    onClick: () -> Unit
-) {
+fun MainMenu(isShow: Boolean, onClick: () -> Unit) {
+
 //    This int state determines what is active and display the menu
-    val selectedMainMenu = viewModel.selectedMainMenu.collectAsStateWithLifecycle()
+    val viewModel: WorkspaceViewModel = viewModel()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
     CleanOverlay(onClick = onClick, isShow = isShow) {
         Row (
             modifier = Modifier
@@ -40,7 +40,7 @@ fun MainMenu(
             horizontalArrangement = Arrangement.End
         ) {
 //            This is to validate based on int number and display the menu
-            when (selectedMainMenu.value) {
+            when (uiState.selectedMainMenu) {
                 MainMenuList.FILE -> FileSubmenu()
                 MainMenuList.EDIT -> EditSubmenu()
                 MainMenuList.SELECTION -> SelectionSubmenu()

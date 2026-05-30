@@ -11,4 +11,4 @@ class CodeEditor(
 
     val filePathList: List<String> = listOf()
 
-) : Content()
+) : ContentTab()

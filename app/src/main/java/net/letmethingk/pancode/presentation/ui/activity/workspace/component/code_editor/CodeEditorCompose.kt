@@ -23,11 +23,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import net.letmethingk.pancode.R
-import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 @Composable
 fun CodeEditorScreen(textFiledState: TextFieldState, filePathList: List<String>) {

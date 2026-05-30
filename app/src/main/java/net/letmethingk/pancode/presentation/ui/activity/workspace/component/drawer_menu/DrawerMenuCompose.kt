@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.activity.workspace.component.drawer
+package net.letmethingk.pancode.presentation.ui.activity.workspace.component.drawer_menu
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
@@ -64,7 +64,7 @@ fun NavButtonDrawer() {
             .padding(vertical = 100.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        IconButtonNavClass.entries.forEach { (icon, description) ->
+        ContentPane.entries.forEach { (icon, description) ->
             IconButton24(
                 onClick = {},
                 imageVector = icon,
