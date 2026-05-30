@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PancodeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    AuthScreen(
+                    WorkspaceScreen(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }

@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.activity.code_editor.component
+package net.letmethingk.pancode.presentation.ui.activity.workspace.component.code_editor
 
 val code: String = """
     <!`DOCTYPE html>

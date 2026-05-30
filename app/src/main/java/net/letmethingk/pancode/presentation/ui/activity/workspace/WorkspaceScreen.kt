@@ -22,9 +22,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import net.letmethingk.pancode.presentation.ui.activity.code_editor.CodeEditorScreen
+import net.letmethingk.pancode.presentation.ui.activity.workspace.component.CodeEditor
+import net.letmethingk.pancode.presentation.ui.activity.workspace.component.Content
+import net.letmethingk.pancode.presentation.ui.activity.workspace.component.code_editor.CodeEditorScreen
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.drawer.DrawerMenu
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.mainmenu.MainMenu
 import net.letmethingk.pancode.presentation.ui.common.components.IconButton24
@@ -43,6 +46,8 @@ fun WorkspaceScreen(
     modifier: Modifier = Modifier,
     viewModel: WorkspaceViewModel = viewModel()
 ) {
+
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val selectedMenu by viewModel.selectedMenu.collectAsStateWithLifecycle()
 //    Workspace screen composable
     Column(
@@ -54,7 +59,16 @@ fun WorkspaceScreen(
     ) {
         Topbar(viewModel)
         TaskbarMenu(viewModel)
-        CodeEditorScreen()
+        when (val content = uiState.contentSelected) {
+            is CodeEditor -> {
+                CodeEditorScreen(
+                    textFiledState = content.textFieldState,
+                    filePathList = content.filePathList
+                )
+            }
+            else -> null
+        }
+
     }
     MainMenu(isShow = selectedMenu == MenuList.MainMenu) {
         viewModel.switchMenu(null)
@@ -70,6 +84,8 @@ fun WorkspaceScreen(
 
 @Composable
 fun TaskbarMenu(viewModel: WorkspaceViewModel = viewModel()) {
+
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -80,11 +96,12 @@ fun TaskbarMenu(viewModel: WorkspaceViewModel = viewModel()) {
                 overscrollEffect = null
             )
     ) {
-        viewModel.listTaskBar.forEach { (number, name) ->
+        uiState.contentList.forEachIndexed { index, content ->
             Taskbar(
-                fileName = name,
-                onClose = { viewModel.listTaskBar.removeAt(number) }
-            ) {  }
+                fileName = content.contentName,
+                onClose = { viewModel.removeContent(index) },
+                onClick = { viewModel.setContent(content) }
+            )
         }
     }
 }
@@ -126,9 +143,10 @@ fun Topbar(viewModel: WorkspaceViewModel = viewModel()) {
         }
 //            Main menu icon button
         IconButton24(
-            onClick = { viewModel.switchMenu(MenuList.MainMenu); viewModel.listTaskBar.add(
-                TaskbarClass(0, "lamboIndex.php")
-            )},
+            onClick = {
+                viewModel.switchMenu(MenuList.MainMenu);
+                viewModel.addContent(CodeEditor("coba"))
+            },
             imageVector = defic24,
             contentDescription = "main-menu"
         )

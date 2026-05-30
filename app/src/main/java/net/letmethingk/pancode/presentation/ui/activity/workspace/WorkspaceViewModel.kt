@@ -5,10 +5,30 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+import net.letmethingk.pancode.presentation.ui.activity.workspace.component.Content
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.mainmenu.MainMenuList
 import net.letmethingk.pancode.presentation.ui.common.components.TaskbarClass
 
 class WorkspaceViewModel : ViewModel(){
+
+    private val _uiState = MutableStateFlow(WorkspaceUiState())
+    val uiState: StateFlow<WorkspaceUiState> = _uiState.asStateFlow()
+
+    fun setContent(content: Content?) {
+        _uiState.update { it.copy(contentSelected = content) }
+    }
+
+    fun addContent(content: Content) {
+        _uiState.update { it.copy(contentList = it.contentList + content)}
+    }
+
+    fun removeContent(index: Int) {
+        _uiState.update { it.copy(contentList = it.contentList.filterIndexed {
+            i, _ -> i != index
+        })}
+    }
+
 //    Taskbar state list
     val listTaskBar = mutableStateListOf<TaskbarClass>()
 
