@@ -3,11 +3,12 @@ plugins {
 //    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.jetbrains.kotlin.serialization)
+    alias(libs.plugins.stability.analyzer)
 }
 
 android {
     namespace = "net.letmethingk.pancode"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "net.letmethingk.pancode"
