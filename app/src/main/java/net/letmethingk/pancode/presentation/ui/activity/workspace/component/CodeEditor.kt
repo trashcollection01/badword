@@ -9,6 +9,6 @@ class CodeEditor(
 
     val textFieldState: TextFieldState = TextFieldState(),
 
-    val filePathList: List<String> = listOf()
+    val filePath: String = "unknown file path"
 
 ) : ContentTab()

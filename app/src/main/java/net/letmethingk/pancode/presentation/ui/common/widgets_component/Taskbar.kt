@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.common.components
+package net.letmethingk.pancode.presentation.ui.common.widgets_component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -17,11 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.presentation.ui.common.compose_vectors.defic12
-
-data class TaskbarClass(
-    val number: Int,
-    val name: String
-) { constructor() : this(number = 0, name = "pancode") }
 
 @Composable
 fun Taskbar(

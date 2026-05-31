@@ -24,17 +24,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
+import com.skydoves.compose.stability.runtime.TraceRecomposition
 import net.letmethingk.pancode.R
 
+@TraceRecomposition
 @Composable
-fun CodeEditorScreen(textFiledState: TextFieldState, filePathList: List<String>) {
+fun CodeEditorCompose(textFiledState: TextFieldState, filePath: String) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .imePadding()
             .background(color = MaterialTheme.colorScheme.surfaceDim)
     ) {
-        BreadcrumbPath(filePathList)
+
+        BreadcrumbPath(filePath)
+
         BasicTextField(
                 state = textFiledState,
                 lineLimits = TextFieldLineLimits.MultiLine(),
@@ -51,31 +55,14 @@ fun CodeEditorScreen(textFiledState: TextFieldState, filePathList: List<String>)
 }
 
 @Composable
-fun BreadcrumbPath(filePathList: List<String>) {
+fun BreadcrumbPath(filePath: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(25.dp)
+            .height(18.dp)
             .horizontalScroll(rememberScrollState())
 //            .background(Color.Red)
             .padding(start = 10.dp),
         verticalAlignment = Alignment.CenterVertically
-    ) {
-        Row(modifier = Modifier.clickable(
-            onClick = {}
-        )) {
-            filePathList.forEach { value ->
-                if (value != filePathList.first()) {
-                    Text(
-                        text = " / ",
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                }
-                Text(
-                    text = value ,
-                    style = MaterialTheme.typography.bodySmall
-                )
-            }
-        }
-    }
+    ) { Text(text = filePath, style = MaterialTheme.typography.bodySmall) }
 }

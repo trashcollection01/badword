@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,13 +26,14 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.CodeEditor
-import net.letmethingk.pancode.presentation.ui.activity.workspace.component.code_editor.CodeEditorScreen
+import net.letmethingk.pancode.presentation.ui.activity.workspace.component.code_editor.CodeEditorCompose
+import net.letmethingk.pancode.presentation.ui.activity.workspace.component.code_editor.code
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.drawer_menu.DrawerMenu
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.main_menu.MainMenu
-import net.letmethingk.pancode.presentation.ui.common.components.IconButton24
+import net.letmethingk.pancode.presentation.ui.common.widgets_component.IconButton24
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.path_menu.PathMenu
-import net.letmethingk.pancode.presentation.ui.common.components.Taskbar
+import net.letmethingk.pancode.presentation.ui.common.widgets_component.Taskbar
 import net.letmethingk.pancode.presentation.ui.common.compose_vectors.defic24
 
 /*
@@ -53,34 +55,40 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Topbar(viewModel)
-        TaskbarMenu(viewModel)
+        TopbarMenu()
+
+        TaskbarMenu()
+
         when (val content = uiState.selectedContentTab) {
             is CodeEditor -> {
-                CodeEditorScreen(
+                CodeEditorCompose(
                     textFiledState = content.textFieldState,
-                    filePathList = content.filePathList
+                    filePath = content.filePath
                 )
             }
             else -> null
         }
 
     }
+
     MainMenu(isShow = uiState.selectedMenu == MenuList.MainMenu) {
         viewModel.switchMenu(null)
         viewModel.switchMainMenu(null)
     }
+
     PathMenu(isShow = uiState.selectedMenu == MenuList.PathMenu) {
         viewModel.switchMenu(null)
     }
+
     DrawerMenu(isShow = uiState.selectedMenu == MenuList.DrawerMenu) {
         viewModel.switchMenu(null)
     }
 }
 
 @Composable
-fun TaskbarMenu(viewModel: WorkspaceViewModel = viewModel()) {
+fun TaskbarMenu() {
 
+    val viewModel: WorkspaceViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     Row(
@@ -105,7 +113,9 @@ fun TaskbarMenu(viewModel: WorkspaceViewModel = viewModel()) {
 }
 
 @Composable
-fun Topbar(viewModel: WorkspaceViewModel = viewModel()) {
+fun TopbarMenu() {
+
+    val viewModel: WorkspaceViewModel = viewModel()
 
 //    val selectedMenu by viewModel.selectedMenu.collectAsStateWithLifecycle()
     Row(
@@ -126,7 +136,9 @@ fun Topbar(viewModel: WorkspaceViewModel = viewModel()) {
                 imageVector = defic24,
                 contentDescription = "drawer-menu"
             )
+
             Spacer(modifier = Modifier.width(25.dp))
+
 //                File Path menu title button
             Row(modifier = Modifier.clickable(
                 onClick = { viewModel.switchMenu(MenuList.PathMenu) })) {
@@ -145,7 +157,7 @@ fun Topbar(viewModel: WorkspaceViewModel = viewModel()) {
         IconButton24(
             onClick = {
                 viewModel.switchMenu(MenuList.MainMenu);
-                viewModel.addContent(CodeEditor("coba"))
+                viewModel.addContent(CodeEditor("coba", textFieldState = TextFieldState(code)))
             },
             imageVector = defic24,
             contentDescription = "main-menu"

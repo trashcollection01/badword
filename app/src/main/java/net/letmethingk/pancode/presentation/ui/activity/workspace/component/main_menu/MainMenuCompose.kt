@@ -13,10 +13,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import net.letmethingk.pancode.presentation.ui.activity.workspace.WorkspaceViewModel
-import net.letmethingk.pancode.presentation.ui.common.components.CleanOverlay
-import net.letmethingk.pancode.presentation.ui.common.components.DropdownMenuButton
-import net.letmethingk.pancode.presentation.ui.common.components.Menu
-import net.letmethingk.pancode.presentation.ui.common.components.Submenu
+import net.letmethingk.pancode.presentation.ui.common.widgets_component.CleanOverlay
+import net.letmethingk.pancode.presentation.ui.common.widgets_component.DropdownMenuButton
+import net.letmethingk.pancode.presentation.ui.common.widgets_component.Menu
+import net.letmethingk.pancode.presentation.ui.common.widgets_component.Submenu
 
 /*
  * Main Menu
@@ -32,6 +32,7 @@ fun MainMenu(isShow: Boolean, onClick: () -> Unit) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     CleanOverlay(onClick = onClick, isShow = isShow) {
+
         Row (
             modifier = Modifier
                 .width(325.dp)
@@ -39,6 +40,7 @@ fun MainMenu(isShow: Boolean, onClick: () -> Unit) {
                 .offset(x = 75.dp, y = 75.dp),
             horizontalArrangement = Arrangement.End
         ) {
+
 //            This is to validate based on int number and display the menu
             when (uiState.selectedMainMenu) {
                 MainMenuList.FILE -> FileSubmenu()
@@ -51,7 +53,9 @@ fun MainMenu(isShow: Boolean, onClick: () -> Unit) {
                 MainMenuList.HELP -> HelpSubmenu()
                 else -> {  }
             }
+
             Spacer(modifier = Modifier.width(5.dp))
+
 //            this is func to wrap up the DropdownMenuButton() to be 1 menu
             Menu() { MainMenuList.entries.forEach { menu ->
                     DropdownMenuButton(

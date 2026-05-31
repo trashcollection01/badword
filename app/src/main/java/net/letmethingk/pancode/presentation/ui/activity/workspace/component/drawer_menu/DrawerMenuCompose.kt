@@ -20,8 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import net.letmethingk.pancode.presentation.ui.common.components.IconButton24
-import net.letmethingk.pancode.presentation.ui.common.components.Overlay
+import net.letmethingk.pancode.presentation.ui.common.widgets_component.IconButton24
+import net.letmethingk.pancode.presentation.ui.common.widgets_component.Overlay
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 /*
@@ -30,17 +30,20 @@ import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
  * */
 @Composable
 fun DrawerMenu(isShow: Boolean, onClick: () -> Unit ) {
+
     Overlay(
         onClick = onClick,
         isShowAnimate = isShow,
         alignment = Alignment.TopStart
     ) { }
+
 //    animation slide for drawer menu
     AnimatedVisibility(
         visible = isShow,
         enter = slideInHorizontally(animationSpec = tween(500), initialOffsetX = { -it }),
         exit = slideOutHorizontally(animationSpec = tween(400), targetOffsetX = { -it })
     ) {
+
         Row(
             modifier = Modifier
                 .fillMaxWidth(fraction = 0.7F)
@@ -64,6 +67,7 @@ fun NavButtonDrawer() {
             .padding(vertical = 100.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
         ContentPane.entries.forEach { (icon, description) ->
             IconButton24(
                 onClick = {},

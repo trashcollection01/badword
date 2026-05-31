@@ -4,9 +4,9 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import net.letmethingk.pancode.presentation.ui.common.components.CleanOverlay
-import net.letmethingk.pancode.presentation.ui.common.components.DropdownMenuButton
-import net.letmethingk.pancode.presentation.ui.common.components.Submenu
+import net.letmethingk.pancode.presentation.ui.common.widgets_component.CleanOverlay
+import net.letmethingk.pancode.presentation.ui.common.widgets_component.DropdownMenuButton
+import net.letmethingk.pancode.presentation.ui.common.widgets_component.Submenu
 
 @Composable
 fun PathMenu(isShow: Boolean, onClick: () -> Unit) {

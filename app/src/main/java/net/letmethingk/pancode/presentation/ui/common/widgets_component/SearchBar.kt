@@ -1,4 +1,4 @@
-package net.letmethingk.pancode.presentation.ui.common.components
+package net.letmethingk.pancode.presentation.ui.common.widgets_component
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
