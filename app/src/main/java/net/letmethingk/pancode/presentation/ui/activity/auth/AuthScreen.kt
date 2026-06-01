@@ -21,11 +21,11 @@ import net.letmethingk.pancode.presentation.ui.activity.auth.register.RegisterSc
 import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 @Composable
-fun AuthScreen(
-    modifier: Modifier,
-    viewModel: AuthViewModel = viewModel()
-) {
-    val showForm = viewModel.showForm.collectAsStateWithLifecycle()
+fun AuthScreen(modifier: Modifier) {
+
+    val viewModel: AuthViewModel = viewModel()
+    val uiState = viewModel.showForm.collectAsStateWithLifecycle()
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -34,13 +34,8 @@ fun AuthScreen(
             .padding(top = 45.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        if (showForm.value) {
-            RegisterScreen()
-        } else {
-            LoginScreen()
-        }
-    }
+
+    ) { if (uiState.value) RegisterScreen() else LoginScreen() }
 }
 
 @Preview()
