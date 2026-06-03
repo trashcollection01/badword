@@ -15,8 +15,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.letmethingk.pancode.presentation.ui.common.compose_vectors.defic12
+import net.letmethingk.pancode.presentation.ui.common.compose_vectors.defic18
+import net.letmethingk.pancode.presentation.ui.theme.PancodeTheme
 
 data class TaskbarClass(
     val number: Int,
@@ -35,13 +38,13 @@ fun Taskbar(
             .defaultMinSize(minWidth = 100.dp)
             .height(35.dp)
             .background(color = MaterialTheme.colorScheme.surfaceVariant)
-            .padding(start = 9.dp, end = 4.dp),
+            .padding(start = 7.dp, end = 7.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
-                imageVector = defic12,
+                imageVector = defic18,
                 contentDescription = ""
             )
             Spacer(modifier = Modifier.width(width = 5.dp))
@@ -50,8 +53,8 @@ fun Taskbar(
                 style = MaterialTheme.typography.labelMedium
             )
         }
-        Spacer(modifier = Modifier.width(width = 2.dp))
-        IconButton24(
+        Spacer(modifier = Modifier.width(width = 7.dp))
+        IconButton12(
             imageVector = defic12,
             onClick = onClose,
             contentDescription = "close"
