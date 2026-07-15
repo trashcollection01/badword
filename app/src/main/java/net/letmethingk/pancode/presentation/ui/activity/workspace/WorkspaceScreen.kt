@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import net.letmethingk.pancode.presentation.ui.activity.workspace.component.CodeEditor
+import net.letmethingk.pancode.presentation.ui.activity.workspace.component.code_editor.CodeEditor
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.code_editor.CodeEditorCompose
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.code_editor.code
 import net.letmethingk.pancode.presentation.ui.activity.workspace.component.drawer_menu.DrawerMenu

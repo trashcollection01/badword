@@ -1,6 +1,7 @@
 package net.letmethingk.pancode.presentation.ui.common.widgets_component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -90,6 +91,22 @@ fun IconButton24(
         )
     }
 }
+
+// Icon button 12
+@Composable
+fun IconButton12(
+    imageVector: ImageVector,
+    size: Dp = 12.dp,
+    contentDescription: String,
+    onClick: () -> Unit
+) {
+    Icon(
+        modifier = Modifier.clickable(onClick = onClick),
+        imageVector = imageVector,
+        contentDescription = contentDescription
+    )
+}
+
 
 //    Dropdown menu Button
 @Composable

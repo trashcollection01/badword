@@ -88,6 +88,90 @@ val defic24: ImageVector
 
 private var _defic24: ImageVector? = null
 
+//          defic18                 //
+
+val defic18: ImageVector
+    get() {
+        if (_defic18 != null) return _defic18!!
+
+        _defic18 = ImageVector.Builder(
+            name = "Defice",
+            defaultWidth = 18.dp,
+            defaultHeight = 18.dp,
+            viewportWidth = 18f,
+            viewportHeight = 18f
+        ).apply {
+            group {
+                path(
+                    stroke = SolidColor(Color(0xFFFFFFFF)),
+                    strokeLineWidth = 3f
+                ) {
+                    moveTo(-8.37487f, 12.3248f)
+                    lineTo(31.252f, 44.4139f)
+                }
+            }
+            group {
+                path(
+                    stroke = SolidColor(Color(0xFFFFFFFF)),
+                    strokeLineWidth = 3f
+                ) {
+                    moveTo(-8.37487f, 5.23559f)
+                    lineTo(31.252f, 37.3248f)
+                }
+            }
+            group {
+                path(
+                    stroke = SolidColor(Color(0xFFFFFFFF)),
+                    strokeLineWidth = 3f
+                ) {
+                    moveTo(-8.37487f, -1.85359f)
+                    lineTo(31.252f, 30.2356f)
+                }
+            }
+            group {
+                path(
+                    stroke = SolidColor(Color(0xFFFFFFFF)),
+                    strokeLineWidth = 3f
+                ) {
+                    moveTo(-8.37487f, -8.94276f)
+                    lineTo(31.252f, 23.1464f)
+                }
+            }
+            group {
+                path(
+                    stroke = SolidColor(Color(0xFFFFFFFF)),
+                    strokeLineWidth = 3f
+                ) {
+                    moveTo(-8.37487f, -16.0319f)
+                    lineTo(31.252f, 16.0572f)
+                }
+            }
+            group {
+                path(
+                    stroke = SolidColor(Color(0xFFFFFFFF)),
+                    strokeLineWidth = 3f
+                ) {
+                    moveTo(-8.37487f, -23.1211f)
+                    lineTo(31.252f, 8.96807f)
+                }
+            }
+            group {
+                path(
+                    stroke = SolidColor(Color(0xFFFFFFFF)),
+                    strokeLineWidth = 3f
+                ) {
+                    moveTo(-8.37487f, -30.2103f)
+                    lineTo(31.252f, 1.8789f)
+                }
+            }
+        }.build()
+
+        return _defic18!!
+    }
+
+private var _defic18: ImageVector? = null
+
+
 //          defic12 zone            //
 
 val defic12: ImageVector
