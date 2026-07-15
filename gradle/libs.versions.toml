@@ -1,5 +1,5 @@
 [versions]
-agp = "9.0.1"
+agp = "9.1.1"
 billingKtx = "8.3.0"
 coilNetworkOkhttp = "3.3.0"
 kotlin = "2.3.10"
