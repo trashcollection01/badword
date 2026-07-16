@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "net.letmethingk.pancode"
+    namespace = "net.joohnserde.badword"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "net.letmethingk.pancode"
+        applicationId = "net.joohnserde.badword"
         minSdk = 30
         targetSdk = 36
         versionCode = 1
