@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import net.joohnserde.badword.activity.workspace.feature.ContentTab
+import net.joohnserde.badword.activity.workspace.feature.content_tab.ContentTab
 import net.joohnserde.badword.activity.workspace.feature.main_menu.MainMenuList
 
 class WorkspaceViewModel : ViewModel(){

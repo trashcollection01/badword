@@ -1,7 +1,7 @@
 package net.joohnserde.badword.activity.workspace.feature.code_editor
 
 import androidx.compose.foundation.text.input.TextFieldState
-import net.joohnserde.badword.activity.workspace.feature.ContentTab
+import net.joohnserde.badword.activity.workspace.feature.content_tab.ContentTab
 
 class CodeEditor(
 
@@ -11,4 +11,4 @@ class CodeEditor(
 
     val filePath: String = "unknown file path"
 
-) : ContentTab()
+) : ContentTab

@@ -1,13 +1,16 @@
 package net.joohnserde.badword.activity.workspace
 
+import net.joohnserde.badword.activity.workspace.feature.content_tab.ContentTab
+import net.joohnserde.badword.activity.workspace.feature.main_menu.MainMenuList
+
 data class WorkspaceUiState(
 
-    val selectedMenu: net.joohnserde.badword.activity.workspace.MenuList? = null,
+    val selectedMenu: MenuList? = null,
 
-    val selectedMainMenu: net.joohnserde.badword.activity.workspace.feature.main_menu.MainMenuList? = null,
+    val selectedMainMenu: MainMenuList? = null,
 
-    val contentTabList: List<net.joohnserde.badword.activity.workspace.feature.ContentTab> = listOf(),
+    val contentTabList: List<ContentTab> = listOf(),
 
-    val selectedContentTab: net.joohnserde.badword.activity.workspace.feature.ContentTab? = null
+    val selectedContentTab: ContentTab? = null
 
 )

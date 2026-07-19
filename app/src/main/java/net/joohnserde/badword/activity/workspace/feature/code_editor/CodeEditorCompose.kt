@@ -25,26 +25,21 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import com.skydoves.compose.stability.runtime.TraceRecomposition
 import net.joohnserde.badword.R
+import net.joohnserde.badword.activity.workspace.feature.content_tab.ContentCompose
 
 @TraceRecomposition
 @Composable
 fun CodeEditorCompose(textFiledState: TextFieldState, filePath: String) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .imePadding()
-            .background(color = MaterialTheme.colorScheme.surfaceDim)
-    ) {
-
+    ContentCompose {
         BreadcrumbPath(filePath)
 
         BasicTextField(
-                state = textFiledState,
-                lineLimits = TextFieldLineLimits.MultiLine(),
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(vertical = 5.dp, horizontal = 5.dp)
-                    .horizontalScroll(state = rememberScrollState(), overscrollEffect = null),
+            state = textFiledState,
+            lineLimits = TextFieldLineLimits.MultiLine(),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(vertical = 5.dp, horizontal = 5.dp)
+                .horizontalScroll(state = rememberScrollState(), overscrollEffect = null),
             textStyle = MaterialTheme.typography.bodyLarge.copy(
                 fontFamily = FontFamily(Font(R.font.jetbrainsmono)),
                 color = if (isSystemInDarkTheme()) Color.White else Color.Black
