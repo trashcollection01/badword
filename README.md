@@ -1,2 +1,2 @@
-# Pancode Code Editor
+# Badword Code Editor
  
