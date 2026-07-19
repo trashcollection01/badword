@@ -15,7 +15,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import net.joohnserde.badword.activity.auth.login.LoginScreen
 import net.joohnserde.badword.activity.auth.register.RegisterScreen
-import net.joohnserde.badword.core.ui.theme.PancodeTheme
+import net.joohnserde.badword.core.ui.theme.BadwordTheme
 
 @Composable
 fun AuthScreen(modifier: Modifier) {
@@ -38,7 +38,7 @@ fun AuthScreen(modifier: Modifier) {
 @Preview()
 @Composable
 fun AuthScreenPreview() {
-    PancodeTheme() {
+    BadwordTheme() {
         AuthScreen(Modifier)
     }
 }

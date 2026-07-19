@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.joohnserde.badword.core.ui.reusable.widgets.IconButton24
 import net.joohnserde.badword.core.ui.reusable.widgets.Overlay
-import net.joohnserde.badword.core.ui.theme.PancodeTheme
+import net.joohnserde.badword.core.ui.theme.BadwordTheme
 
 /*
  * This is composable component to display drawer menu
@@ -82,7 +82,7 @@ fun NavButtonDrawer() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewDrawerMenu() {
-    PancodeTheme {
+    BadwordTheme {
         Column(
             modifier = Modifier
                 .fillMaxSize()

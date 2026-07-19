@@ -9,14 +9,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import net.joohnserde.badword.activity.workspace.WorkspaceScreen
-import net.joohnserde.badword.core.ui.theme.PancodeTheme
+import net.joohnserde.badword.core.ui.theme.BadwordTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            PancodeTheme {
+            BadwordTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     WorkspaceScreen(
                         modifier = Modifier.padding(innerPadding)

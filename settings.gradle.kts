@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Pancode"
+rootProject.name = "Badword"
 include(":app")

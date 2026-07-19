@@ -23,12 +23,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import net.joohnserde.badword.core.ui.reusable.widgets.ButtonLarge
-import net.joohnserde.badword.core.ui.theme.PancodeTheme
+import net.joohnserde.badword.core.ui.theme.BadwordTheme
 
 @Composable
 fun Uitest(modifier: Modifier) {
     var animate by remember { mutableStateOf(false) }
-    PancodeTheme {
+    BadwordTheme {
         Column(
             modifier = modifier.fillMaxSize().background(MaterialTheme.colorScheme.background),
             verticalArrangement = Arrangement.Center,

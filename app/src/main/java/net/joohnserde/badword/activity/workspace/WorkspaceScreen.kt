@@ -34,7 +34,7 @@ import net.joohnserde.badword.activity.workspace.feature.path_menu.PathMenu
 import net.joohnserde.badword.core.ui.reusable.vectors.defic24
 import net.joohnserde.badword.core.ui.reusable.widgets.IconButton24
 import net.joohnserde.badword.core.ui.reusable.widgets.Taskbar
-import net.joohnserde.badword.core.ui.theme.PancodeTheme
+import net.joohnserde.badword.core.ui.theme.BadwordTheme
 
 /*
  * Workspace screen
@@ -148,7 +148,7 @@ fun TopbarMenu() {
                 )
                 Spacer(modifier = Modifier.width(7.dp))
                 Text(
-                    text = "Pancode",
+                    text = "Badword",
                     style = MaterialTheme.typography.titleMedium
                 )
             }
@@ -168,7 +168,7 @@ fun TopbarMenu() {
 @Preview(showBackground = true)
 @Composable
 fun WorkspacePreview() {
-    PancodeTheme {
+    BadwordTheme {
         WorkspaceScreen()
     }
 }

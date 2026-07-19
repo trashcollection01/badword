@@ -23,7 +23,7 @@ import net.joohnserde.badword.core.ui.reusable.vectors.defic24
 import net.joohnserde.badword.core.ui.reusable.widgets.ButtonLarge
 import net.joohnserde.badword.core.ui.reusable.widgets.CustomTextField
 import net.joohnserde.badword.core.ui.reusable.widgets.IconButton24
-import net.joohnserde.badword.core.ui.theme.PancodeTheme
+import net.joohnserde.badword.core.ui.theme.BadwordTheme
 
 @Composable
 fun RegisterScreen() {
@@ -97,7 +97,7 @@ fun RegisterScreen() {
 @Preview
 @Composable
 fun RegisterScreenPreview() {
-    PancodeTheme {
+    BadwordTheme {
         RegisterScreen()
     }
 }

@@ -40,7 +40,7 @@ fun WelcomeDialog(onConfirm: () -> Unit) {
 //            Text content
             Column {
                 Text(
-                    text = "Welcome to Pancode",
+                    text = "Welcome to Badword",
                     style = MaterialTheme.typography.headlineMedium
                 )
                 Spacer(modifier = Modifier.height(15.dp))
@@ -51,9 +51,9 @@ fun WelcomeDialog(onConfirm: () -> Unit) {
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(
-                    text = "Pancode is a code editor developed to make technology easier for people to access. " +
+                    text = "Badword is a code editor developed to make technology easier for people to access. " +
                             "Conventional code editors can only be accessed on a PC, some people don't have a PC. " +
-                            "That's why we build Pancode.",
+                            "That's why we build Badword.",
                     style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.Justify
                 )
