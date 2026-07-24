@@ -25,15 +25,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import net.joohnserde.badword.activity.workspace.feature.code_editor.CodeEditor
-import net.joohnserde.badword.activity.workspace.feature.code_editor.CodeEditorCompose
+import net.joohnserde.badword.activity.workspace.feature.code_editor.model.CodeEditor
+import net.joohnserde.badword.activity.workspace.feature.code_editor.compose.CodeEditorCompose
 import net.joohnserde.badword.activity.workspace.feature.code_editor.code
 import net.joohnserde.badword.activity.workspace.feature.drawer_menu.DrawerMenu
 import net.joohnserde.badword.activity.workspace.feature.main_menu.MainMenu
 import net.joohnserde.badword.activity.workspace.feature.path_menu.PathMenu
 import net.joohnserde.badword.core.ui.reusable.vectors.defic24
 import net.joohnserde.badword.core.ui.reusable.widgets.IconButton24
-import net.joohnserde.badword.core.ui.reusable.widgets.Taskbar
+import net.joohnserde.badword.core.ui.reusable.widgets.Tabbar
 import net.joohnserde.badword.core.ui.theme.BadwordTheme
 
 /*
@@ -57,7 +57,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
 
         TopbarMenu()
 
-        TaskbarMenu()
+        TabbarMenu()
 
         when (val content = uiState.selectedContentTab) {
             is CodeEditor -> {
@@ -86,7 +86,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun TaskbarMenu() {
+fun TabbarMenu() {
 
     val viewModel: WorkspaceViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -103,10 +103,10 @@ fun TaskbarMenu() {
     ) {
 
         uiState.contentTabList.forEachIndexed { index, content ->
-            Taskbar(
+            Tabbar(
                 fileName = content.contentName,
                 onClose = { viewModel.removeContent(index) },
-                onClick = { viewModel.setContent(content) }
+                onClick = { viewModel.setContent(index) }
             )
         }
     }

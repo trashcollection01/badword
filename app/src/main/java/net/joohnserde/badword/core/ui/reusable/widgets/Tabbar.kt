@@ -20,7 +20,7 @@ import net.joohnserde.badword.core.ui.reusable.vectors.defic12
 import net.joohnserde.badword.core.ui.reusable.vectors.defic18
 
 @Composable
-fun Taskbar(
+fun Tabbar(
     fileName: String,
     onClose: () -> Unit,
     onClick: () -> Unit

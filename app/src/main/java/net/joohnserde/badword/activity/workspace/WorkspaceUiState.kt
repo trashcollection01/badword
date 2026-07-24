@@ -1,6 +1,6 @@
 package net.joohnserde.badword.activity.workspace
 
-import net.joohnserde.badword.activity.workspace.feature.content_tab.ContentTab
+import net.joohnserde.badword.activity.workspace.feature.content_tab.model.ContentTab
 import net.joohnserde.badword.activity.workspace.feature.main_menu.MainMenuList
 
 data class WorkspaceUiState(

@@ -1,4 +1,4 @@
-package net.joohnserde.badword.activity.workspace.feature.content_tab
+package net.joohnserde.badword.activity.workspace.feature.content_tab.compose
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

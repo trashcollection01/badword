@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import net.joohnserde.badword.activity.auth.AuthViewModel
-import net.joohnserde.badword.activity.auth.CustomTextClickable
+import net.joohnserde.badword.core.ui.reusable.widgets.CustomTextClickable
 import net.joohnserde.badword.core.ui.reusable.vectors.defic24
 import net.joohnserde.badword.core.ui.reusable.widgets.ButtonLarge
 import net.joohnserde.badword.core.ui.reusable.widgets.CustomTextField

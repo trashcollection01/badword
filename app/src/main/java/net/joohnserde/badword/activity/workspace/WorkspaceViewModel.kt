@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import net.joohnserde.badword.activity.workspace.feature.content_tab.ContentTab
+import net.joohnserde.badword.activity.workspace.feature.content_tab.model.ContentTab
 import net.joohnserde.badword.activity.workspace.feature.main_menu.MainMenuList
 
 class WorkspaceViewModel : ViewModel(){
@@ -13,8 +13,8 @@ class WorkspaceViewModel : ViewModel(){
     private val _uiState = MutableStateFlow(WorkspaceUiState())
     val uiState: StateFlow<WorkspaceUiState> = _uiState.asStateFlow()
 
-    fun setContent(content: ContentTab?) {
-        _uiState.update { it.copy(selectedContentTab = content) }
+    fun setContent(index: Int) {
+        _uiState.update { it.copy(selectedContentTab = it.contentTabList[index]) }
     }
 
     fun addContent(content: ContentTab) {
@@ -25,6 +25,7 @@ class WorkspaceViewModel : ViewModel(){
         _uiState.update { it.copy(contentTabList = it.contentTabList.filterIndexed {
             i, _ -> i != index
         })}
+        setContent(index)
     }
 
     fun switchMenu(menu: MenuList?) {
