@@ -13,19 +13,13 @@ import androidx.compose.ui.text.withLink
 
 @Composable
 fun CustomTextClickable(
-
     textBeforeLink: String,
-
     textLink: String,
-
     linkInteractionListener: () -> LinkInteractionListener?
-
 ) {
     Text(
         text = buildAnnotatedString {
-
             append(textBeforeLink)
-
             val link = LinkAnnotation.Clickable(
                 tag = "onClick",
                 styles = TextLinkStyles(
@@ -37,7 +31,6 @@ fun CustomTextClickable(
                 // Do something
                 linkInteractionListener = linkInteractionListener()
             )
-
             withLink(link = link) {
                 append(text = textLink)
             }

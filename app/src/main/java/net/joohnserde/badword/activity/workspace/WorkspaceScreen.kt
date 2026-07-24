@@ -25,6 +25,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import net.joohnserde.badword.activity.workspace.compose.ContentShow
+import net.joohnserde.badword.activity.workspace.compose.TabbarMenu
+import net.joohnserde.badword.activity.workspace.compose.TopbarMenu
 import net.joohnserde.badword.activity.workspace.feature.code_editor.model.CodeEditor
 import net.joohnserde.badword.activity.workspace.feature.code_editor.compose.CodeEditorCompose
 import net.joohnserde.badword.activity.workspace.feature.code_editor.code
@@ -59,15 +62,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
 
         TabbarMenu()
 
-        when (val content = uiState.selectedContentTab) {
-            is CodeEditor -> {
-                CodeEditorCompose(
-                    textFiledState = content.textFieldState,
-                    filePath = content.filePath
-                )
-            }
-            else -> null
-        }
+        ContentShow()
 
     }
 
@@ -82,86 +77,6 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
 
     DrawerMenu(isShow = uiState.selectedMenu == MenuList.DrawerMenu) {
         viewModel.switchMenu(null)
-    }
-}
-
-@Composable
-fun TabbarMenu() {
-
-    val viewModel: WorkspaceViewModel = viewModel()
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(35.dp)
-            .background(color = MaterialTheme.colorScheme.surfaceVariant)
-            .horizontalScroll(
-                state = rememberScrollState(),
-                overscrollEffect = null
-            )
-    ) {
-
-        uiState.contentTabList.forEachIndexed { index, content ->
-            Tabbar(
-                fileName = content.contentName,
-                onClose = { viewModel.removeContent(index) },
-                onClick = { viewModel.setContent(index) }
-            )
-        }
-    }
-}
-
-@Composable
-fun TopbarMenu() {
-
-    val viewModel: WorkspaceViewModel = viewModel()
-
-//    val selectedMenu by viewModel.selectedMenu.collectAsStateWithLifecycle()
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(60.dp)
-            .background(color = MaterialTheme.colorScheme.surface)
-            .padding(horizontal = 15.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-
-        Row {
-//                Drawer menu icon button
-            IconButton24(
-                onClick = {
-                    viewModel.switchMenu(MenuList.DrawerMenu) },
-                imageVector = defic24,
-                contentDescription = "drawer-menu"
-            )
-
-            Spacer(modifier = Modifier.width(25.dp))
-
-//                File Path menu title button
-            Row(modifier = Modifier.clickable(
-                onClick = { viewModel.switchMenu(MenuList.PathMenu) })) {
-                Icon(
-                    imageVector = defic24,
-                    contentDescription = null
-                )
-                Spacer(modifier = Modifier.width(7.dp))
-                Text(
-                    text = "Badword",
-                    style = MaterialTheme.typography.titleMedium
-                )
-            }
-        }
-//            Main menu icon button
-        IconButton24(
-            onClick = {
-                viewModel.switchMenu(MenuList.MainMenu);
-                viewModel.addContent(CodeEditor("coba", textFieldState = TextFieldState(code)))
-            },
-            imageVector = defic24,
-            contentDescription = "main-menu"
-        )
     }
 }
 

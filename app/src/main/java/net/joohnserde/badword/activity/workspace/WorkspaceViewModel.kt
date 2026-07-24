@@ -14,18 +14,30 @@ class WorkspaceViewModel : ViewModel(){
     val uiState: StateFlow<WorkspaceUiState> = _uiState.asStateFlow()
 
     fun setContent(index: Int) {
-        _uiState.update { it.copy(selectedContentTab = it.contentTabList[index]) }
+        _uiState.update {
+            it.copy(selectedContentTab = it.contentTabList[index])
+        }
     }
 
     fun addContent(content: ContentTab) {
-        _uiState.update { it.copy(contentTabList = it.contentTabList + content)}
+        _uiState.update {
+            it.copy(contentTabList = it.contentTabList + content)
+        }
     }
 
     fun removeContent(index: Int) {
-        _uiState.update { it.copy(contentTabList = it.contentTabList.filterIndexed {
-            i, _ -> i != index
-        })}
-        setContent(index)
+        _uiState.update {
+            it.copy(contentTabList = it.contentTabList.filterIndexed {
+                i, _ -> i != index
+            })
+        }
+        if (!uiState.value.contentTabList.isEmpty()) {
+            if (uiState.value.contentTabList.getOrNull(index) == null) {
+                setContent(index.minus(1))
+            }
+        }
+
+
     }
 
     fun switchMenu(menu: MenuList?) {
