@@ -13,7 +13,6 @@ class WorkspaceViewModel : ViewModel(){
 
     private val _uiState = MutableStateFlow(WorkspaceUiState())
     val uiState: StateFlow<WorkspaceUiState> = _uiState.asStateFlow()
-    private val valueState = uiState.value
 
     fun setContent(index: Int) {
         _uiState.update { it.copy(selectedContent = index) }
@@ -26,7 +25,7 @@ class WorkspaceViewModel : ViewModel(){
     }
 
     fun removeContent(index: Int) {
-        if (valueState.contentList.lastIndex == valueState.selectedContent) {
+        if (uiState.value.contentList.lastIndex == uiState.value.selectedContent) {
             setContent(index.minus(1))
         }
         _uiState.update {
