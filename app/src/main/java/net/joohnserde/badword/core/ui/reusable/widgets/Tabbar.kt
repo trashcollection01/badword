@@ -22,6 +22,7 @@ import net.joohnserde.badword.core.ui.reusable.vectors.defic18
 @Composable
 fun Tabbar(
     fileName: String,
+    isSelected: Boolean,
     onClose: () -> Unit,
     onClick: () -> Unit
 ) {
@@ -30,7 +31,11 @@ fun Tabbar(
             .clickable(onClick = onClick)
             .defaultMinSize(minWidth = 100.dp)
             .height(35.dp)
-            .background(color = MaterialTheme.colorScheme.surfaceVariant)
+            .background(
+                color = if (isSelected) {
+                    MaterialTheme.colorScheme.primary
+                } else MaterialTheme.colorScheme.surfaceVariant
+            )
             .padding(start = 7.dp, end = 7.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween

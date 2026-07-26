@@ -1,6 +1,6 @@
 package net.joohnserde.badword.activity.workspace
 
-import net.joohnserde.badword.activity.workspace.feature.content_tab.model.ContentTab
+import net.joohnserde.badword.activity.workspace.feature.content_tab.model.Content
 import net.joohnserde.badword.activity.workspace.feature.main_menu.MainMenuList
 
 data class WorkspaceUiState(
@@ -9,8 +9,8 @@ data class WorkspaceUiState(
 
     val selectedMainMenu: MainMenuList? = null,
 
-    val contentTabList: List<ContentTab> = listOf(),
+    val contentList: List<Content> = listOf(),
 
-    val selectedContentTab: ContentTab? = null
+    val selectedContent: Int = 0
 
 )

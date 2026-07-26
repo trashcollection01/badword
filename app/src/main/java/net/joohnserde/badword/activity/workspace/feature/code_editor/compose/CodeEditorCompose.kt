@@ -26,7 +26,10 @@ import net.joohnserde.badword.activity.workspace.feature.content_tab.compose.Con
 
 @TraceRecomposition
 @Composable
-fun CodeEditorCompose(textFiledState: TextFieldState, filePath: String) {
+fun CodeEditorCompose(
+    textFiledState: TextFieldState,
+    filePath: String
+) {
     ContentCompose {
         BreadcrumbPath(filePath)
 

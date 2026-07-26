@@ -33,9 +33,10 @@ fun TabbarMenu() {
             )
     ) {
 
-        uiState.contentTabList.forEachIndexed { index, content ->
+        uiState.contentList.forEachIndexed { index, content ->
             Tabbar(
                 fileName = content.contentName,
+                isSelected = uiState.selectedContent == index,
                 onClose = { viewModel.removeContent(index) },
                 onClick = { viewModel.setContent(index) }
             )

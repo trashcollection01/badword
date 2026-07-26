@@ -62,7 +62,10 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
 
         TabbarMenu()
 
-        ContentShow()
+        ContentShow(
+            content = uiState.contentList.getOrNull(uiState.selectedContent),
+            contentIsEmpty = uiState.contentList.isEmpty()
+        )
 
     }
 

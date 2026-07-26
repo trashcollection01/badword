@@ -1,43 +1,39 @@
 package net.joohnserde.badword.activity.workspace
 
+import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import net.joohnserde.badword.activity.workspace.feature.content_tab.model.ContentTab
+import net.joohnserde.badword.activity.workspace.feature.content_tab.model.Content
 import net.joohnserde.badword.activity.workspace.feature.main_menu.MainMenuList
 
 class WorkspaceViewModel : ViewModel(){
 
     private val _uiState = MutableStateFlow(WorkspaceUiState())
     val uiState: StateFlow<WorkspaceUiState> = _uiState.asStateFlow()
+    private val valueState = uiState.value
 
     fun setContent(index: Int) {
-        _uiState.update {
-            it.copy(selectedContentTab = it.contentTabList[index])
-        }
+        _uiState.update { it.copy(selectedContent = index) }
     }
 
-    fun addContent(content: ContentTab) {
+    fun addContent(content: Content) {
         _uiState.update {
-            it.copy(contentTabList = it.contentTabList + content)
+            it.copy(contentList = it.contentList.plus(content))
         }
     }
 
     fun removeContent(index: Int) {
+        if (valueState.contentList.lastIndex == valueState.selectedContent) {
+            setContent(index.minus(1))
+        }
         _uiState.update {
-            it.copy(contentTabList = it.contentTabList.filterIndexed {
+            it.copy(contentList = it.contentList.filterIndexed {
                 i, _ -> i != index
             })
         }
-        if (!uiState.value.contentTabList.isEmpty()) {
-            if (uiState.value.contentTabList.getOrNull(index) == null) {
-                setContent(index.minus(1))
-            }
-        }
-
-
     }
 
     fun switchMenu(menu: MenuList?) {

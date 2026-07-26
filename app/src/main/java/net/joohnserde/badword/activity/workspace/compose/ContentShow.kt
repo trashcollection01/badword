@@ -4,23 +4,20 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
-import net.joohnserde.badword.activity.workspace.WorkspaceViewModel
+import com.skydoves.compose.stability.runtime.TraceRecomposition
 import net.joohnserde.badword.activity.workspace.feature.code_editor.compose.CodeEditorCompose
 import net.joohnserde.badword.activity.workspace.feature.code_editor.model.CodeEditor
+import net.joohnserde.badword.activity.workspace.feature.content_tab.model.Content
 
 @Composable
-fun ContentShow() {
+fun ContentShow(
+    content: Content?,
+    contentIsEmpty: Boolean
+) {
 
-    val viewModel: WorkspaceViewModel = viewModel()
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
-    if (!uiState.contentTabList.isEmpty()) {
-        when (val content = uiState.selectedContentTab) {
+    if (!contentIsEmpty) {
+        when (content) {
             is CodeEditor -> {
                 CodeEditorCompose(
                     textFiledState = content.textFieldState,
@@ -32,8 +29,6 @@ fun ContentShow() {
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Text("Content Not Found!")
-        }
+        ) { Text("Content Not Found!") }
     }
 }
