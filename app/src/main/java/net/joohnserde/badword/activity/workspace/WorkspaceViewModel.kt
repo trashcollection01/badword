@@ -1,13 +1,11 @@
 package net.joohnserde.badword.activity.workspace
 
-import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import net.joohnserde.badword.activity.workspace.feature.content_tab.model.Content
-import net.joohnserde.badword.activity.workspace.feature.main_menu.MainMenuList
 
 class WorkspaceViewModel : ViewModel(){
 
@@ -38,8 +36,8 @@ class WorkspaceViewModel : ViewModel(){
     fun switchMenu(menu: MenuList?) {
         _uiState.update { it.copy(selectedMenu = menu) }
     }
-    fun switchMainMenu(mainMenu: MainMenuList?) {
-        _uiState.update { it.copy(selectedMainMenu = mainMenu) }
+    fun switchMainMenu(mainMenuIndex: Int?) {
+        _uiState.update { it.copy(selectedMainMenu = mainMenuIndex) }
     }
 
 }
