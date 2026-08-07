@@ -17,7 +17,8 @@ import net.joohnserde.badword.activity.workspace.compose.TabbarMenu
 import net.joohnserde.badword.activity.workspace.compose.TopbarMenu
 import net.joohnserde.badword.activity.workspace.feature.drawer_menu.DrawerMenu
 import net.joohnserde.badword.activity.workspace.feature.main_menu.MainMenuCompose
-import net.joohnserde.badword.activity.workspace.feature.path_menu.PathMenu
+import net.joohnserde.badword.activity.workspace.feature.path_menu.PathMenuCompose
+import net.joohnserde.badword.activity.workspace.feature.path_menu.PathMenuCompose
 import net.joohnserde.badword.core.ui.theme.BadwordTheme
 
 /*
@@ -52,9 +53,7 @@ fun WorkspaceScreen(modifier: Modifier = Modifier) {
 
     MainMenuCompose(uiState = uiState, viewModel = viewModel)
 
-    PathMenu(isShow = uiState.selectedMenu == MenuList.PathMenu) {
-        viewModel.switchMenu(null)
-    }
+    PathMenuCompose(uiState = uiState, viewModel = viewModel)
 
     DrawerMenu(isShow = uiState.selectedMenu == MenuList.DrawerMenu) {
         viewModel.switchMenu(null)
