@@ -8,8 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import net.joohnserde.badword.activity.workspace.WorkspaceScreen
-import net.joohnserde.badword.core.ui.theme.BadwordTheme
+import net.joohnserde.badword.presentation.common.theme.BadwordTheme
+import net.joohnserde.badword.presentation.workspace.WorkspaceScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
